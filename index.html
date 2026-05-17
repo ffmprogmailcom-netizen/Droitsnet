@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- SEO TITRE & DESCRIPTION -->
+<title>DroisNet — Simulateur de droits sociaux gratuit 2026 | RSA, APL, AAH</title>
+<meta name="description" content="Simulez vos droits sociaux en 3 minutes. RSA, APL, prime d'activité, AAH, chèque énergie, allocations familiales... Gratuit, anonyme, sans inscription."/>
+<meta name="keywords" content="simulateur droits sociaux, RSA, APL, AAH, prime activité, chèque énergie, aide logement, droits sociaux 2026, simulation CAF"/>
+<meta name="author" content="DroisNet"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://droitsnet.fr"/>
+
+<!-- OPEN GRAPH (partage réseaux sociaux) -->
+<meta property="og:title" content="DroisNet — Simulateur de droits sociaux 2026"/>
+<meta property="og:description" content="Découvrez toutes les aides auxquelles vous avez droit en 3 minutes. Gratuit et anonyme."/>
+<meta property="og:url" content="https://droitsnet.fr"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="fr_FR"/>
+
+<!-- DONNÉES STRUCTURÉES (Rich Results Google) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "DroisNet",
+  "description": "Simulateur gratuit de droits sociaux français — RSA, APL, AAH, prime d'activité, chèque énergie, allocations familiales",
+  "url": "https://droitsnet.fr",
+  "applicationCategory": "GovernmentApplication",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "inLanguage": "fr-FR",
+  "keywords": "droits sociaux, RSA, APL, AAH, simulateur, CAF, France"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Marianne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DroisNet — Simulateur de droits sociaux 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Marianne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f5f6fa;--white:#fff;--navy:#1b2a4a;--slate:#3a4e6e;--muted:#7b8fa8;
+  --border:#d9e2ef;--gold:#b5860d;--gold-light:#fdf5e0;--gold-border:#e6c97a;
+  --blue:#003189;--blue-mid:#1553c7;--blue-light:#e8eeff;
+  --green:#00704a;--green-light:#e5f5ee;
+  --amber:#8b4f00;--amber-light:#fff3e0;
+  --purple:#5e2d91;--purple-light:#f0e9fb;
+  --teal:#006b6b;--teal-light:#e0f4f4;
+  --orange:#a63800;--orange-light:#fff0e5;
+  --pink:#8b0052;--pink-light:#fce8f3;
+  --indigo:#1e1f8e;--indigo-light:#eaeaff;
+  --red:#b50000;
+  --rf-blue:#003189; /* République Française blue */
+  --rf-red:#e1000f;  /* République Française red */
+}
+body{font-family:'Marianne','Source Sans Pro',Arial,sans-serif;background:var(--bg);color:var(--navy);}
+h1,h2,h3,h4{font-family:'Marianne',Arial,sans-serif;font-weight:800;}
+button{cursor:pointer;font-family:'Marianne',Arial,sans-serif;transition:all .15s;}
+input{font-family:'Marianne',Arial,sans-serif;}
+a{text-decoration:none;transition:opacity .15s;}
+svg{display:inline-block;vertical-align:middle;}
+
+/* ── NAV ── */
+nav{background:var(--white);border-bottom:3px solid var(--rf-blue);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,49,137,.10);}
+.nav-inner{max-width:1040px;margin:0 auto;padding:0 20px;display:flex;align-items:center;height:62px;gap:6px;}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;margin-right:28px;flex-shrink:0;}
+.logo-icon{width:36px;height:36px;border-radius:8px;background:var(--rf-blue);display:flex;align-items:center;justify-content:center;}
+.logo-text{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-.3px;}
+.logo-sub{font-size:10px;color:var(--muted);font-weight:600;margin-top:-2px;}
+.nav-links{display:flex;gap:2px;flex:1;overflow-x:auto;}
+.nav-btn{padding:7px 13px;border-radius:6px;border:none;background:transparent;color:var(--muted);font-weight:600;font-size:13px;white-space:nowrap;display:flex;align-items:center;gap:6px;font-family:'Marianne',Arial,sans-serif;}
+.nav-btn.active{background:var(--blue-light);color:var(--blue);font-weight:800;}
+.nav-badge{background:var(--green);color:#fff;font-size:10px;padding:1px 7px;border-radius:20px;font-weight:800;}
+.nav-cta{margin-left:auto;padding:9px 18px;border-radius:6px;border:none;background:var(--rf-blue);color:#fff;font-weight:800;font-size:13px;flex-shrink:0;display:flex;align-items:center;gap:7px;box-shadow:0 2px 8px rgba(0,49,137,.25);}
+
+/* ── RF BANNER ── */
+.rf-banner{background:var(--navy);padding:8px 20px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.rf-flag{display:flex;height:16px;width:24px;border-radius:2px;overflow:hidden;flex-shrink:0;}
+.rf-flag-b{flex:1;background:#002395;}
+.rf-flag-w{flex:1;background:#fff;}
+.rf-flag-r{flex:1;background:#ED2939;}
+.rf-banner-text{color:rgba(255,255,255,.7);font-size:11px;font-weight:600;}
+
+/* ── PAGES ── */
+.page{display:none;animation:fadeIn .25s ease;}
+.page.active{display:block;}
+.container{max-width:940px;margin:0 auto;padding:40px 16px 80px;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ── CARDS ── */
+.card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;box-shadow:0 1px 8px rgba(27,42,74,.06);}
+.section-head{margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--border);}
+.section-head h2{font-size:26px;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:10px;}
+.section-head p{color:var(--muted);font-size:14px;}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:4px;letter-spacing:.2px;}
+
+/* ── HERO ILLUSTRATION ── */
+.hero{display:flex;align-items:center;gap:48px;padding:52px 0 56px;flex-wrap:wrap;}
+.hero-content{flex:1;min-width:260px;}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:var(--gold-light);border:1px solid var(--gold-border);color:var(--gold);padding:5px 14px;border-radius:4px;font-size:12px;font-weight:700;margin-bottom:20px;}
+.hero h1{font-size:clamp(28px,5vw,48px);font-weight:800;color:var(--navy);line-height:1.15;margin-bottom:16px;}
+.hero h1 em{color:var(--rf-blue);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--slate);line-height:1.7;margin-bottom:28px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{padding:13px 26px;border-radius:6px;border:none;background:var(--rf-blue);color:#fff;font-size:14px;font-weight:800;box-shadow:0 4px 18px rgba(0,49,137,.28);display:flex;align-items:center;gap:8px;font-family:'Marianne',Arial,sans-serif;}
+.btn-primary:hover{background:var(--blue-mid);}
+.btn-outline{padding:13px 26px;border-radius:6px;border:2px solid var(--navy);background:transparent;color:var(--navy);font-size:14px;font-weight:800;display:flex;align-items:center;gap:8px;font-family:'Marianne',Arial,sans-serif;}
+.hero-illustration{flex-shrink:0;width:280px;}
+
+/* ── STATS ── */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:52px;}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px 20px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 1px 6px rgba(27,42,74,.05);}
+.stat-icon-wrap{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.stat-num{font-size:30px;font-weight:800;color:var(--navy);line-height:1;margin-bottom:4px;}
+.stat-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* ── CAT CARDS ── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:10px;margin-bottom:48px;}
+.cat-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .18s;}
+.cat-card:hover{border-color:var(--blue-mid);box-shadow:0 3px 12px rgba(0,49,137,.12);}
+.cat-icon-wrap{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cat-label{font-weight:700;font-size:12px;color:var(--navy);line-height:1.35;}
+.cat-count{font-size:11px;font-weight:700;margin-top:2px;}
+
+/* ── CTA DARK ── */
+.cta-dark{background:linear-gradient(135deg,var(--navy) 0%,#243b6e 100%);border-radius:12px;padding:30px 36px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.cta-dark h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:6px;}
+.cta-dark p{color:rgba(255,255,255,.55);font-size:14px;}
+.btn-gold{padding:11px 22px;border-radius:6px;border:2px solid var(--gold-border);background:transparent;color:var(--gold-light);font-size:13px;font-weight:800;flex-shrink:0;display:flex;align-items:center;gap:7px;font-family:'Marianne',Arial,sans-serif;}
+
+/* ── SIMULATOR ── */
+.progress-wrap{margin-bottom:24px;}
+.progress-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.progress-bar{display:flex;gap:3px;}
+.progress-seg{height:4px;border-radius:99px;background:var(--border);flex:1;transition:background .3s;}
+.progress-seg.done{background:var(--rf-blue);}
+.step-icon-wrap{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.step-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:6px;}
+.step-q{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:20px;line-height:1.35;}
+.step-options{display:flex;flex-direction:column;gap:8px;}
+.opt-btn{display:flex;align-items:center;gap:12px;padding:13px 16px;border:2px solid var(--border);border-radius:8px;background:var(--white);text-align:left;width:100%;transition:all .15s;}
+.opt-btn:hover{border-color:var(--blue-mid);}
+.opt-btn.selected{border-color:var(--rf-blue);background:var(--blue-light);}
+.opt-icon-wrap{width:36px;height:36px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.opt-btn.selected .opt-icon-wrap{background:var(--rf-blue);}
+.opt-label{font-weight:700;color:var(--navy);font-size:13px;}
+.opt-desc{font-size:11px;color:var(--muted);}
+.opt-check{width:20px;height:20px;border-radius:50%;background:var(--rf-blue);display:flex;align-items:center;justify-content:center;margin-left:auto;flex-shrink:0;}
+.num-wrap{position:relative;}
+.num-input{width:100%;padding:14px 80px 14px 16px;border:2px solid var(--border);border-radius:8px;font-size:20px;font-weight:800;color:var(--navy);outline:none;background:var(--white);transition:border-color .2s;font-family:'Marianne',Arial,sans-serif;}
+.num-input:focus{border-color:var(--rf-blue);}
+.num-suf{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;font-weight:700;}
+.step-nav{display:flex;gap:10px;margin-top:22px;}
+.btn-back{padding:11px 18px;border-radius:6px;border:1.5px solid var(--border);background:var(--white);color:var(--muted);font-weight:700;font-size:13px;display:flex;align-items:center;gap:6px;font-family:'Marianne',Arial,sans-serif;}
+.btn-next{flex:1;padding:12px;border-radius:6px;border:none;background:var(--border);color:var(--muted);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Marianne',Arial,sans-serif;}
+.btn-next.ready{background:var(--rf-blue);color:#fff;box-shadow:0 3px 12px rgba(0,49,137,.28);}
+.privacy-note{text-align:center;color:var(--muted);font-size:11px;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:4px;}
+
+/* ── RESULTS ── */
+.res-banner{background:linear-gradient(135deg,var(--navy),#243b6e);border-radius:12px;padding:28px 32px;margin-bottom:18px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.res-total-label{color:rgba(255,255,255,.5);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;}
+.res-total-num{font-size:52px;font-weight:800;color:#fff;line-height:1;}
+.res-total-sub{color:rgba(255,255,255,.4);font-size:12px;margin-top:4px;}
+.res-stat-n{font-size:32px;font-weight:800;text-align:center;}
+.res-stat-l{color:rgba(255,255,255,.4);font-size:10px;text-align:center;}
+.disclaimer{background:var(--amber-light);border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:18px;display:flex;gap:10px;align-items:flex-start;}
+.disclaimer p{font-size:12px;color:var(--amber);line-height:1.6;}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:16px;padding-bottom:2px;flex-wrap:wrap;}
+.tab-btn{padding:6px 14px;border-radius:4px;border:1.5px solid var(--border);background:var(--white);color:var(--muted);font-size:12px;font-weight:700;white-space:nowrap;font-family:'Marianne',Arial,sans-serif;}
+.tab-btn.active{background:var(--rf-blue);color:#fff;border-color:var(--rf-blue);}
+.aide-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white);margin-bottom:8px;transition:box-shadow .2s;}
+.aide-header{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;}
+.aide-header:hover{background:#fafbfd;}
+.aide-icon-box{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.aide-name{font-weight:800;font-size:14px;color:var(--navy);}
+.aide-cat-pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;}
+.aide-desc-s{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:240px;}
+.aide-montant{font-weight:800;font-size:15px;text-align:right;flex-shrink:0;}
+.aide-arrow{transition:transform .2s;flex-shrink:0;}
+.aide-card.open .aide-arrow{transform:rotate(90deg);}
+.aide-body{border-top:1px solid var(--border);padding:16px 20px;background:#fafbfd;display:none;}
+.aide-card.open .aide-body{display:block;}
+.aide-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.aide-sec-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:7px;}
+.aide-li{display:flex;gap:6px;margin-bottom:5px;align-items:flex-start;}
+.aide-li span{font-size:12px;color:var(--slate);line-height:1.5;}
+.aide-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.aide-meta{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:4px;}
+.aide-meta strong{color:var(--navy);}
+.btn-demande{margin-left:auto;display:inline-flex;align-items:center;gap:6px;color:#fff;padding:8px 14px;border-radius:6px;font-size:12px;font-weight:800;}
+.non-elig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin-top:10px;}
+.non-elig-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 12px;opacity:.4;display:flex;align-items:center;gap:8px;}
+.step-link{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border-radius:8px;border:1px solid var(--border);margin-bottom:8px;}
+.step-num{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;flex-shrink:0;}
+.step-lt{font-weight:700;color:var(--navy);font-size:13px;}
+.step-ld{font-size:11px;color:var(--muted);}
+
+/* ── CHAT ── */
+.chat-head{background:linear-gradient(135deg,var(--navy),#243b6e);padding:18px 22px;display:flex;align-items:center;gap:12px;}
+.chat-av{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.chat-title{color:#fff;font-weight:800;font-size:15px;}
+.chat-status{color:#86efac;font-size:11px;display:flex;align-items:center;gap:4px;}
+.chat-dot{width:6px;height:6px;border-radius:50%;background:#86efac;display:inline-block;}
+.chat-msgs{height:260px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--white);}
+.msg{max-width:82%;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.65;}
+.msg.user{align-self:flex-end;background:var(--rf-blue);color:#fff;border-radius:12px 12px 3px 12px;}
+.msg.ai{align-self:flex-start;background:#f1f5fb;color:var(--slate);border-radius:3px 12px 12px 12px;}
+.chat-sugs{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;background:var(--white);border-top:1px solid var(--border);}
+.sug-btn{background:var(--blue-light);border:none;border-radius:4px;padding:4px 10px;font-size:11px;color:var(--blue);font-weight:700;display:flex;align-items:center;gap:4px;font-family:'Marianne',Arial,sans-serif;}
+.chat-inp-row{display:flex;gap:8px;padding:12px 16px;background:var(--white);border-top:1px solid var(--border);}
+.chat-inp{flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;color:var(--navy);outline:none;background:var(--bg);font-family:'Marianne',Arial,sans-serif;}
+.chat-inp:focus{border-color:var(--rf-blue);}
+.chat-send{padding:10px 18px;border-radius:6px;border:none;background:var(--rf-blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;gap:6px;font-family:'Marianne',Arial,sans-serif;}
+
+/* ── BUSINESS ── */
+.model-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+.model-tab{padding:9px 16px;border-radius:6px;border:2px solid var(--border);background:var(--white);color:var(--muted);font-weight:800;font-size:13px;display:flex;align-items:center;gap:7px;font-family:'Marianne',Arial,sans-serif;}
+.model-tab.active{color:#fff;}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px;margin-top:14px;}
+.plan-card{border:1.5px solid var(--border);border-radius:10px;padding:16px;}
+.plan-name{font-weight:800;font-size:16px;color:var(--navy);margin-bottom:2px;}
+.plan-price{font-weight:800;font-size:20px;margin-bottom:10px;}
+.plan-feat{display:flex;gap:6px;margin-bottom:5px;font-size:12px;color:var(--slate);align-items:center;}
+.client-row{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:var(--bg);border-radius:8px;margin-bottom:6px;flex-wrap:wrap;gap:6px;}
+.client-n{font-weight:700;color:var(--navy);font-size:13px;}
+.client-d{font-size:11px;color:var(--muted);}
+.pot-box{padding:13px 16px;border-radius:8px;margin-top:14px;display:flex;align-items:center;gap:10px;}
+.pot-box span:last-child{font-weight:800;font-size:14px;}
+.plan90-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px;margin-bottom:28px;}
+.plan90-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px 20px;}
+.p90a{display:flex;gap:7px;margin-bottom:7px;font-size:12px;color:var(--slate);line-height:1.5;align-items:flex-start;}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;margin-bottom:28px;}
+.tech-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+.tech-cat{font-weight:800;font-size:12px;color:var(--navy);margin-bottom:9px;text-transform:uppercase;letter-spacing:.5px;}
+.tech-item{display:flex;gap:6px;margin-bottom:5px;font-size:12px;color:var(--slate);align-items:center;}
+.legal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px;}
+.legal-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start;}
+.legal-iw{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.legal-t{font-weight:800;font-size:13px;color:var(--navy);margin-bottom:4px;}
+.legal-d{font-size:12px;color:var(--muted);line-height:1.6;}
+.install-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:14px;margin-bottom:24px;}
+.install-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.install-head{padding:10px 14px;display:flex;align-items:center;gap:8px;}
+.install-n{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;flex-shrink:0;}
+.install-t{color:#fff;font-weight:800;font-size:12px;}
+.install-code{padding:12px 14px;font-size:11px;color:var(--slate);line-height:1.8;background:#f4f6fa;font-family:'Courier New',monospace;white-space:pre-wrap;word-break:break-all;}
+
+/* ── UTILS ── */
+.loading-dots{display:inline-flex;gap:4px;align-items:center;}
+.loading-dots span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:dot 1s infinite;}
+.loading-dots span:nth-child(2){animation-delay:.15s;}
+.loading-dots span:nth-child(3){animation-delay:.3s;}
+@keyframes dot{0%,80%,100%{transform:scale(0)}40%{transform:scale(1.2)}}
+details summary{cursor:pointer;color:var(--muted);font-size:13px;font-weight:700;padding:10px 0;list-style:none;display:flex;align-items:center;gap:6px;}
+details summary::-webkit-details-marker{display:none;}
+footer{background:var(--navy);padding:28px 20px;}
+.footer-inner{max-width:940px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo{font-weight:800;font-size:18px;color:#fff;}
+.footer-sub{color:rgba(255,255,255,.35);font-size:11px;margin-top:2px;}
+.footer-links{display:flex;gap:16px;}
+.footer-link{color:rgba(255,255,255,.45);font-size:11px;font-weight:600;}
+@media(max-width:640px){
+  .hero{flex-direction:column;padding:32px 0 36px;}
+  .hero-illustration{width:220px;margin:0 auto;}
+  .aide-2col{grid-template-columns:1fr;}
+  .res-banner{gap:16px;}
+  .res-total-num{font-size:40px;}
+  .container{padding:24px 12px 60px;}
+  .card{padding:18px 16px;}
+  .nav-inner{padding:0 12px;}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG DEFS -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Government-style line icons -->
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="i-bar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><circle cx="8" cy="16" r="1" fill="currentColor"/><circle cx="16" cy="16" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M4 14h12M19.5 9a7.5 7.5 0 1 0 0 6"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+  <symbol id="i-child" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M12 9v6"/><path d="M8 15l4 4 4-4"/><path d="M7 12h10"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-senior" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><path d="M8 21l2-6h4l2 6"/><path d="M6 21h12"/><path d="M9 15l-2 3"/><path d="M15 15l2 3"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-cr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-cl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+  <symbol id="i-office" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></symbol>
+  <symbol id="i-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+  <symbol id="i-credit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+</svg>
+
+<!-- RF BANNER -->
+<div class="rf-banner">
+  <div class="rf-flag"><div class="rf-flag-b"></div><div class="rf-flag-w"></div><div class="rf-flag-r"></div></div>
+  <span class="rf-banner-text">Service public d'information sur les droits sociaux · France 2026</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo" onclick="gp('accueil')">
+      <div class="logo-icon"><svg width="20" height="20" style="color:#fff;"><use href="#i-shield"/></svg></div>
+      <div><div class="logo-text">DroisNet</div><div class="logo-sub">Simulateur de droits sociaux</div></div>
+    </div>
+    <div class="nav-links">
+      <button class="nav-btn active" id="nav-accueil" onclick="gp('accueil')"><svg width="14" height="14"><use href="#i-home"/></svg>Accueil</button>
+      <button class="nav-btn" id="nav-simulateur" onclick="gp('simulateur')"><svg width="14" height="14"><use href="#i-search"/></svg>Simulateur</button>
+      <button class="nav-btn" id="nav-resultats" onclick="gp('resultats')"><svg width="14" height="14"><use href="#i-bar"/></svg>Mes droits<span class="nav-badge" id="eb" style="display:none">0</span></button>
+      <button class="nav-btn" id="nav-assistant" onclick="gp('assistant')"><svg width="14" height="14"><use href="#i-bot"/></svg>Conseiller IA</button>
+      <button class="nav-btn" id="nav-business" onclick="gp('business')"><svg width="14" height="14"><use href="#i-rocket"/></svg>Lancer l'app</button>
+    </div>
+    <button class="nav-cta" onclick="startSim()"><svg width="14" height="14"><use href="#i-search"/></svg>Simuler mes droits</button>
+  </div>
+</nav>
+
+<!-- ══ ACCUEIL ══ -->
+<div id="page-accueil" class="page active">
+<div class="container">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge"><svg width="13" height="13"><use href="#i-shield"/></svg>Droits sociaux · Édition 2026</div>
+      <h1>Simulez vos droits<br><em>en 3 minutes chrono</em></h1>
+      <p class="hero-sub">Découvrez toutes les aides auxquelles vous êtes éligible — RSA, APL, AAH, allocations familiales, chèque énergie et bien plus encore. Gratuit, anonyme, sans inscription.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="startSim()">Commencer la simulation<svg width="16" height="16"><use href="#i-right"/></svg></button>
+        <button class="btn-outline" onclick="gp('business')">Créer son business<svg width="16" height="16"><use href="#i-rocket"/></svg></button>
+      </div>
+    </div>
+    <!-- VECTOR ILLUSTRATION -->
+    <div class="hero-illustration">
+      <svg viewBox="0 0 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background shape -->
+        <rect x="20" y="20" width="240" height="200" rx="20" fill="#e8eeff" opacity=".5"/>
+        <!-- Document base -->
+        <rect x="60" y="40" width="160" height="200" rx="12" fill="#fff" stroke="#d9e2ef" stroke-width="1.5"/>
+        <!-- Header bar -->
+        <rect x="60" y="40" width="160" height="36" rx="12" fill="#003189"/>
+        <rect x="60" y="64" width="160" height="12" fill="#003189"/>
+        <!-- Header text lines -->
+        <rect x="80" y="50" width="70" height="6" rx="3" fill="rgba(255,255,255,.8)"/>
+        <rect x="80" y="60" width="40" height="4" rx="2" fill="rgba(255,255,255,.4)"/>
+        <!-- RF Tricolor accent -->
+        <rect x="60" y="40" width="8" height="36" rx="4" fill="#003189"/>
+        <rect x="68" y="40" width="5" height="36" fill="#fff"/>
+        <rect x="73" y="40" width="5" height="36" fill="#ED2939"/>
+        <!-- Aid rows -->
+        <g transform="translate(0,16)">
+          <!-- Row 1 - RSA -->
+          <rect x="74" y="80" width="132" height="22" rx="6" fill="#f0f4ff"/>
+          <circle cx="86" cy="91" r="6" fill="#003189"/>
+          <rect x="97" y="87" width="40" height="4" rx="2" fill="#1b2a4a"/>
+          <rect x="97" y="94" width="28" height="3" rx="1.5" fill="#7b8fa8"/>
+          <rect x="172" y="87" width="26" height="7" rx="3.5" fill="#003189"/>
+          <!-- Row 2 - APL -->
+          <rect x="74" y="108" width="132" height="22" rx="6" fill="#f0f4ff"/>
+          <circle cx="86" cy="119" r="6" fill="#5e2d91"/>
+          <rect x="97" y="115" width="36" height="4" rx="2" fill="#1b2a4a"/>
+          <rect x="97" y="122" width="24" height="3" rx="1.5" fill="#7b8fa8"/>
+          <rect x="172" y="115" width="26" height="7" rx="3.5" fill="#5e2d91"/>
+          <!-- Row 3 - Prime -->
+          <rect x="74" y="136" width="132" height="22" rx="6" fill="#f0f4ff"/>
+          <circle cx="86" cy="147" r="6" fill="#00704a"/>
+          <rect x="97" y="143" width="52" height="4" rx="2" fill="#1b2a4a"/>
+          <rect x="97" y="150" width="32" height="3" rx="1.5" fill="#7b8fa8"/>
+          <rect x="172" y="143" width="26" height="7" rx="3.5" fill="#00704a"/>
+          <!-- Row 4 - C2S -->
+          <rect x="74" y="164" width="132" height="22" rx="6" fill="#f0f4ff"/>
+          <circle cx="86" cy="175" r="6" fill="#006b6b"/>
+          <rect x="97" y="171" width="30" height="4" rx="2" fill="#1b2a4a"/>
+          <rect x="97" y="178" width="20" height="3" rx="1.5" fill="#7b8fa8"/>
+          <rect x="160" y="171" width="38" height="7" rx="3.5" fill="#e5f5ee" stroke="#00704a" stroke-width="1"/>
+        </g>
+        <!-- Total chip -->
+        <rect x="74" y="205" width="132" height="26" rx="8" fill="#003189"/>
+        <rect x="84" y="212" width="50" height="5" rx="2.5" fill="rgba(255,255,255,.6)"/>
+        <rect x="162" y="209" width="36" height="12" rx="6" fill="#e8eeff"/>
+        <!-- Checkmark badge -->
+        <circle cx="222" cy="52" r="18" fill="#00704a"/>
+        <polyline points="213,52 219,58 231,46" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Decorative dots -->
+        <circle cx="36" cy="60" r="5" fill="#003189" opacity=".15"/>
+        <circle cx="248" cy="180" r="8" fill="#5e2d91" opacity=".1"/>
+        <circle cx="36" cy="180" r="4" fill="#00704a" opacity=".2"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-icon-wrap" style="background:#fee2e2;"><svg width="24" height="24" style="color:#b50000;"><use href="#i-warn"/></svg></div><div><div class="stat-num">3 Mds€</div><div class="stat-desc">perdus par non-recours au RSA chaque année</div></div></div>
+    <div class="stat-card"><div class="stat-icon-wrap" style="background:var(--blue-light);"><svg width="24" height="24" style="color:var(--rf-blue);"><use href="#i-shield"/></svg></div><div><div class="stat-num">+20</div><div class="stat-desc">aides et services simulés gratuitement</div></div></div>
+    <div class="stat-card"><div class="stat-icon-wrap" style="background:#fef3c7;"><svg width="24" height="24" style="color:#92400e;"><use href="#i-bolt"/></svg></div><div><div class="stat-num">&lt; 3 min</div><div class="stat-desc">pour connaître l'ensemble de vos droits</div></div></div>
+    <div class="stat-card"><div class="stat-icon-wrap" style="background:var(--green-light);"><svg width="24" height="24" style="color:var(--green);"><use href="#i-lock"/></svg></div><div><div class="stat-num">100%</div><div class="stat-desc">gratuit, anonyme, aucune inscription</div></div></div>
+  </div>
+
+  <h2 style="font-size:22px;color:var(--navy);margin-bottom:6px;text-align:center;">Aides couvertes par la simulation</h2>
+  <p style="color:var(--muted);font-size:13px;text-align:center;margin-bottom:20px;">Panorama complet de la protection sociale française</p>
+  <div class="cat-grid">
+    <div class="cat-card" onclick="startSim()"><div class="cat-icon-wrap" style="background:var(--blue-light);"><svg width="20" height="20" style="color:var(--rf-blue);"><use href="#i-euro"/></svg></div><div><div class="cat-label">Revenus &amp; Minima sociaux</div><div class="cat-count" style="color:var(--rf-blue);">3 aides</div></div></div>
+    <div class="cat-card" onclick="startSim()"><div class="cat-icon-wrap" style="background:var(--purple-light);"><svg width="20" height="20" style="color:var(--purple);"><use href="#i-home"/></svg></div><div><div class="cat-label">Logement &amp; Énergie</div><div class="cat-count" style="color:var(--purple);">4 aides</div></div></div>
+    <div class="cat-card" onclick="startSim()"><div class="cat-icon-wrap" style="background:var(--teal-light);"><svg width="20" height="20" style="color:var(--teal);"><use href="#i-heart"/></svg></div><div><div class="cat-label">Santé &amp; Autonomie</div><div class="cat-count" style="color:var(--teal);">2 aides</div></div></div>
+    <div class="cat-card" onclick="startSim()"><div class="cat-icon-wrap" style="background:var(--orange-light);"><svg width="20" height="20" style="color:var(--orange);"><use href="#i-child"/></svg></div><div><div class="cat-label">Famille &amp; Enfants</div><div class="cat-count" style="color:var(--orange);">3 aides</div></div></div>
+    <div class="cat-card" onclick="startSim()"><div class="cat-icon-wrap" style="background:var(--indigo-light);"><svg width="20" height="20" style="color:var(--indigo);"><use href="#i-bag"/></svg></div><div><div class="cat-label">Emploi &amp; Formation</div><div class="cat-count" style="color:var(--indigo);">3 aides</div></div></div>
+    <div class="cat-card" onclick="startSim()"><div class="cat-icon-wrap" style="background:var(--pink-light);"><svg width="20" height="20" style="color:var(--pink);"><use href="#i-senior"/></svg></div><div><div class="cat-label">Retraite &amp; Seniors</div><div class="cat-count" style="color:var(--pink);">2 aides</div></div></div>
+  </div>
+
+  <div class="cta-dark">
+    <div style="flex:1;min-width:180px;"><h3>Créer un business autour de DroisNet</h3><p>Guide complet : mise en ligne, modèles de revenus, plan 90 jours, aspects légaux.</p></div>
+    <button class="btn-gold" onclick="gp('business')"><svg width="15" height="15"><use href="#i-rocket"/></svg>Voir le guide</button>
+  </div>
+</div>
+</div>
+
+<!-- ══ SIMULATEUR ══ -->
+<div id="page-simulateur" class="page">
+<div class="container">
+  <div class="section-head"><h2><svg width="22" height="22" style="color:var(--rf-blue);"><use href="#i-search"/></svg>Simulateur de droits sociaux</h2><p>Répondez aux questions suivantes pour identifier toutes les aides auxquelles vous êtes éligible.</p></div>
+  <div class="card" style="max-width:580px;margin:0 auto;" id="sim-container"></div>
+</div>
+</div>
+
+<!-- ══ RÉSULTATS ══ -->
+<div id="page-resultats" class="page">
+<div class="container">
+  <div class="section-head"><h2><svg width="22" height="22" style="color:var(--rf-blue);"><use href="#i-bar"/></svg>Vos droits estimés</h2><p>Cliquez sur chaque aide pour consulter les conditions, documents et liens officiels.</p></div>
+  <div id="rc">
+    <div class="card" style="text-align:center;padding:48px 24px;">
+      <svg width="56" height="56" style="color:var(--rf-blue);display:block;margin:0 auto 16px;"><use href="#i-search"/></svg>
+      <h3 style="font-size:20px;margin-bottom:8px;color:var(--navy);">Commencez par la simulation</h3>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:22px;">Répondez à quelques questions pour découvrir vos droits personnalisés.</p>
+      <button class="btn-primary" onclick="startSim()">Démarrer<svg width="15" height="15"><use href="#i-right"/></svg></button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ ASSISTANT ══ -->
+<div id="page-assistant" class="page">
+<div class="container">
+  <div class="section-head"><h2><svg width="22" height="22" style="color:var(--rf-blue);"><use href="#i-bot"/></svg>Conseiller IA</h2><p>Posez toutes vos questions — l'IA vous répond en tenant compte de votre situation personnelle.</p></div>
+  <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(27,42,74,.07);">
+    <div class="chat-head">
+      <div class="chat-av"><svg width="24" height="24" style="color:rgba(255,255,255,.9);"><use href="#i-bot"/></svg></div>
+      <div><div class="chat-title">Conseiller IA DroisNet</div><div class="chat-status"><span class="chat-dot"></span>En ligne · Expert droits sociaux français</div></div>
+    </div>
+    <div class="chat-msgs" id="chat-messages">
+      <div class="msg ai">Bonjour ! Je suis votre conseiller DroisNet. Effectuez d'abord la simulation pour des réponses personnalisées. Posez-moi toutes vos questions sur vos droits sociaux.</div>
+    </div>
+    <div class="chat-sugs">
+      <button class="sug-btn" onclick="setSug('Comment cumuler plusieurs aides ?')"><svg width="10" height="10"><use href="#i-info"/></svg>Cumuler des aides ?</button>
+      <button class="sug-btn" onclick="setSug('Quelles démarches faire en premier ?')"><svg width="10" height="10"><use href="#i-map"/></svg>Par où commencer ?</button>
+      <button class="sug-btn" onclick="setSug('Mes aides sont-elles imposables ?')"><svg width="10" height="10"><use href="#i-doc"/></svg>Aides imposables ?</button>
+      <button class="sug-btn" onclick="setSug('Puis-je travailler et toucher le RSA ?')"><svg width="10" height="10"><use href="#i-bag"/></svg>RSA + travail ?</button>
+    </div>
+    <div class="chat-inp-row">
+      <input class="chat-inp" id="chat-input" placeholder="Posez votre question..." onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button class="chat-send" onclick="sendChat()"><svg width="14" height="14"><use href="#i-send"/></svg>Envoyer</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ BUSINESS ══ -->
+<div id="page-business" class="page">
+<div class="container">
+  <div class="section-head"><h2><svg width="22" height="22" style="color:var(--rf-blue);"><use href="#i-rocket"/></svg>Lancer DroisNet — Guide complet</h2><p>Toutes les étapes pour mettre l'application en ligne et construire un business rentable.</p></div>
+
+  <div class="card" style="margin-bottom:24px;border-left:4px solid var(--rf-blue);">
+    <h3 style="font-size:18px;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px;"><svg width="18" height="18" style="color:var(--rf-blue);"><use href="#i-globe"/></svg>Mise en ligne de l'application</h3>
+    <div class="install-grid">
+      <div class="install-card"><div class="install-head" style="background:var(--rf-blue);"><div class="install-n">1</div><div class="install-t">GitHub</div></div><div class="install-code">github.com → Sign up
+Nouveau repo "droitsnet"
+Ajouter le fichier index.html</div></div>
+      <div class="install-card"><div class="install-head" style="background:var(--green);"><div class="install-n">2</div><div class="install-t">Vercel</div></div><div class="install-code">vercel.com → Sign up with GitHub
+Add New Project → droitsnet
+Deploy → En ligne en 2 minutes</div></div>
+      <div class="install-card"><div class="install-head" style="background:var(--purple);"><div class="install-n">3</div><div class="install-t">Domaine</div></div><div class="install-code">ovh.com → droitsnet.fr
+~10€/an
+Vercel → Settings → Domains</div></div>
+      <div class="install-card"><div class="install-head" style="background:var(--amber);"><div class="install-n">4</div><div class="install-t">API IA</div></div><div class="install-code">console.anthropic.com
+Créer une clé API
+Vercel → Env Variables</div></div>
+    </div>
+  </div>
+
+  <h3 style="font-size:18px;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;"><svg width="18" height="18" style="color:var(--gold);"><use href="#i-euro"/></svg>Modèles de revenus</h3>
+  <div class="model-tabs">
+    <button class="model-tab active" id="mt-0" onclick="sm(0)" style="background:var(--rf-blue);border-color:var(--rf-blue);color:#fff;"><svg width="13" height="13"><use href="#i-person"/></svg>Freemium</button>
+    <button class="model-tab" id="mt-1" onclick="sm(1)"><svg width="13" height="13"><use href="#i-office"/></svg>B2B</button>
+    <button class="model-tab" id="mt-2" onclick="sm(2)"><svg width="13" height="13"><use href="#i-hand"/></svg>Affiliation</button>
+    <button class="model-tab" id="mt-3" onclick="sm(3)"><svg width="13" height="13"><use href="#i-medal"/></svg>Subventions</button>
+  </div>
+  <div class="card" id="mc" style="margin-bottom:28px;"></div>
+
+  <h3 style="font-size:18px;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;"><svg width="18" height="18"><use href="#i-cal"/></svg>Plan de lancement — 90 jours</h3>
+  <div class="plan90-grid">
+    <div class="plan90-card" style="border-top:4px solid var(--rf-blue);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><span class="pill" style="background:var(--blue-light);color:var(--rf-blue);">Mois 1</span><strong style="color:var(--navy);font-size:14px;">Lancement</strong></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--rf-blue);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Mettre le site en ligne sur Vercel (gratuit)</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--rf-blue);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Acheter le domaine droitsnet.fr (~10€/an)</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--rf-blue);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Créer page LinkedIn + compte TikTok</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--rf-blue);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Contacter 5 associations locales (test gratuit)</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--rf-blue);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Publier 3 contenus sur le non-recours aux droits</span></div>
+    </div>
+    <div class="plan90-card" style="border-top:4px solid var(--green);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><span class="pill" style="background:var(--green-light);color:var(--green);">Mois 2</span><strong style="color:var(--navy);font-size:14px;">Croissance</strong></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--green);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Référencement SEO ciblé (mots-clés droits sociaux)</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--green);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Articles de blog sur les aides méconnues</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--green);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Partenariat 2 mairies pilotes (gratuit)</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--green);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Lancer la version premium à 4,99€/mois</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--green);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Première campagne de contenu viral</span></div>
+    </div>
+    <div class="plan90-card" style="border-top:4px solid var(--gold);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><span class="pill" style="background:var(--gold-light);color:var(--gold);">Mois 3</span><strong style="color:var(--navy);font-size:14px;">Monétisation</strong></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--gold);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Convertir les mairies pilotes en clients payants</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--gold);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Démarcher 3 mutuelles pour un partenariat</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--gold);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Dossier BPI France ou French Tech</span></div>
+      <div class="p90a"><svg width="13" height="13" style="color:var(--gold);margin-top:1px;flex-shrink:0;"><use href="#i-cr"/></svg><span>Objectif : 50 abonnés premium + 2 clients B2B</span></div>
+    </div>
+  </div>
+
+  <h3 style="font-size:18px;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;"><svg width="18" height="18"><use href="#i-code"/></svg>Stack technique recommandée</h3>
+  <div class="tech-grid">
+    <div class="tech-card"><div class="tech-cat">Frontend</div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>HTML/CSS/JS pur (ce fichier)</span></div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>Vercel — hébergement gratuit</span></div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>Domaine OVH ~10€/an</span></div></div>
+    <div class="tech-card"><div class="tech-cat">Intelligence Artificielle</div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>API Anthropic (Claude)</span></div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>console.anthropic.com</span></div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>~0,01$ par conversation</span></div></div>
+    <div class="tech-card"><div class="tech-cat">Paiement</div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>Stripe (1,4% + 0,25€/transaction)</span></div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>Aucun frais fixe mensuel</span></div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>Intégration en 30 minutes</span></div></div>
+    <div class="tech-card"><div class="tech-cat">Marketing</div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>Google Search Console</span></div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>Brevo — emails gratuit jusqu'à 300/j</span></div><div class="tech-item"><svg width="12" height="12" style="color:var(--green);"><use href="#i-check"/></svg><span>Buffer — gestion réseaux sociaux</span></div></div>
+  </div>
+
+  <h3 style="font-size:18px;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;"><svg width="18" height="18"><use href="#i-doc"/></svg>Points légaux</h3>
+  <div class="legal-grid">
+    <div class="legal-card"><div class="legal-iw" style="background:var(--blue-light);"><svg width="18" height="18" style="color:var(--rf-blue);"><use href="#i-office"/></svg></div><div><div class="legal-t">Statut juridique</div><div class="legal-d">Micro-entreprise pour démarrer sans frais fixes. SAS dès que la croissance s'accélère.</div></div></div>
+    <div class="legal-card"><div class="legal-iw" style="background:var(--green-light);"><svg width="18" height="18" style="color:var(--green);"><use href="#i-lock"/></svg></div><div><div class="legal-t">RGPD</div><div class="legal-d">Aucune donnée personnelle stockée (déjà le cas). Ajouter mentions légales et politique de confidentialité.</div></div></div>
+    <div class="legal-card"><div class="legal-iw" style="background:var(--amber-light);"><svg width="18" height="18" style="color:var(--amber);"><use href="#i-warn"/></svg></div><div><div class="legal-t">Disclaimer</div><div class="legal-d">Toujours préciser que les résultats sont des estimations indicatives. Ne jamais garantir les montants.</div></div></div>
+    <div class="legal-card"><div class="legal-iw" style="background:var(--purple-light);"><svg width="18" height="18" style="color:var(--purple);"><use href="#i-credit"/></svg></div><div><div class="legal-t">TVA</div><div class="legal-d">Pas de TVA en dessous de 37 500€/an en micro-entreprise. Au-delà : SAS et comptable recommandés.</div></div></div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">DroisNet</div>
+      <div class="footer-sub">Simulateur indicatif · Données anonymes non stockées · 2026</div>
+    </div>
+    <div class="footer-links">
+      <a href="#" class="footer-link">Mentions légales</a>
+      <a href="#" class="footer-link">Confidentialité</a>
+      <a href="#" class="footer-link">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ic=(id,sz=14,c="currentColor")=>`<svg width="${sz}" height="${sz}" style="color:${c};flex-shrink:0;"><use href="#${id}"/></svg>`;
+
+const AIDES=[
+  {id:"rsa",nom:"RSA",cat:"Revenus",si:"i-euro",color:"#003189",cl:"#e8eeff",fn:"Revenu de Solidarité Active",desc:"Revenu minimum garanti pour les personnes sans ressources.",org:"CAF / MSA",lien:"https://www.caf.fr",delai:"1 à 2 mois",conds:["Avoir plus de 25 ans (ou parent isolé)","Résider en France","Ressources insuffisantes"],docs:["Pièce d'identité","Justificatif de domicile","Relevés de compte (3 mois)"],calcul(d){const r=+d.revenus||0,p=+d.personnes||1,b=p===1?635:p===2?952:p===3?1143:1270;if(d.travaille!=="non"&&d.travaille!=="chomage")return{ok:false};if(r>=b)return{ok:false};return{ok:true,m:Math.round(b-r*.62),t:"mensuel"};}},
+  {id:"prime",nom:"Prime d'Activité",cat:"Revenus",si:"i-up",color:"#00704a",cl:"#e5f5ee",fn:"Prime d'Activité",desc:"Complément de revenus pour les travailleurs à faibles salaires.",org:"CAF / MSA",lien:"https://www.caf.fr",delai:"1 mois",conds:["Travailler","Avoir plus de 18 ans","Revenus inférieurs à 1 900€"],docs:["Bulletins de salaire (3 mois)","RIB","Pièce d'identité"],calcul(d){const r=+d.revenus||0,p=+d.personnes||1;if(d.travaille!=="oui")return{ok:false};if(r>1900)return{ok:false};const b=p===1?635:p===2?952:1143,m=Math.round(b+r*.61-r);return m>30?{ok:true,m,t:"mensuel"}:{ok:false};}},
+  {id:"aah",nom:"AAH",cat:"Handicap",si:"i-person",color:"#8b4f00",cl:"#fff3e0",fn:"Allocation Adulte Handicapé",desc:"Aide financière pour les personnes en situation de handicap.",org:"CAF + MDPH",lien:"https://www.caf.fr",delai:"4 à 6 mois",conds:["Taux d'incapacité ≥ 80% (ou 50% + restriction emploi)","Résider en France"],docs:["Notification MDPH","Ressources du foyer","RIB"],calcul(d){if(d.handicap!=="oui")return{ok:false};const r=+d.revenus||0;if(r>=1016)return{ok:false};return{ok:true,m:Math.round(1016-r),t:"mensuel"};}},
+  {id:"apl",nom:"APL",cat:"Logement",si:"i-home",color:"#5e2d91",cl:"#f0e9fb",fn:"Aide Personnalisée au Logement",desc:"Aide au paiement du loyer pour les locataires en logement conventionné.",org:"CAF / MSA",lien:"https://www.caf.fr",delai:"1 à 2 mois",conds:["Être locataire d'un logement conventionné","Résidence principale"],docs:["Bail de location","Justificatifs de revenus","RIB"],calcul(d){if(d.logement!=="locataire")return{ok:false};const r=+d.revenus||0,l=+d.loyer||0,p=+d.personnes||1;if(r>2200||l===0)return{ok:false};const pl=p===1?295:p===2?385:440,m=Math.max(0,Math.round(Math.min(l*.66,pl)-r*.08));return m>15?{ok:true,m,t:"mensuel"}:{ok:false};}},
+  {id:"alf",nom:"ALF",cat:"Logement",si:"i-key",color:"#5e2d91",cl:"#f0e9fb",fn:"Allocation de Logement Familiale",desc:"Aide logement pour les familles avec enfants (logement non conventionné).",org:"CAF / MSA",lien:"https://www.caf.fr",delai:"1 à 2 mois",conds:["Avoir des personnes à charge","Logement non conventionné","Ressources insuffisantes"],docs:["Bail","Justificatifs familiaux","Avis d'imposition"],calcul(d){if(d.logement!=="locataire")return{ok:false};const p=+d.personnes||1,r=+d.revenus||0,l=+d.loyer||0;if(p<2||r>1800||l===0)return{ok:false};const m=Math.round(Math.min(l*.55,250));return m>15?{ok:true,m,t:"mensuel"}:{ok:false};}},
+  {id:"energie",nom:"Chèque Énergie",cat:"Logement",si:"i-bolt",color:"#a63800",cl:"#fff0e5",fn:"Chèque Énergie",desc:"Aide annuelle automatique pour vos factures d'énergie (électricité, gaz, fioul).",org:"DGEC / Anah",lien:"https://chequeenergie.gouv.fr",delai:"Automatique (envoi en avril)",conds:["Revenus fiscaux inférieurs au plafond","Attribution automatique sans démarche"],docs:["Aucun document — attribution automatique par courrier"],calcul(d){const rfr=(+d.revenus||0)*12,p=+d.personnes||1,pl=p===1?11399:p===2?14484:17399;if(rfr>=pl)return{ok:false};return{ok:true,m:rfr<pl*.6?277:191,t:"annuel"};}},
+  {id:"fsl",nom:"FSL",cat:"Logement",si:"i-office",color:"#5e2d91",cl:"#f0e9fb",fn:"Fonds de Solidarité Logement",desc:"Aide départementale pour accéder à un logement ou maintenir votre bail.",org:"Conseil Départemental",lien:"https://www.service-public.fr",delai:"2 à 6 semaines",conds:["Difficultés financières avérées","Résider dans le département"],docs:["Justificatif de situation","Relevés bancaires","Quittances de loyer"],calcul(d){const r=+d.revenus||0,l=+d.loyer||0;if(d.logement!=="locataire"||r>1500||l===0)return{ok:false};return{ok:true,label:"Jusqu'à 1 200€",t:"variable"};}},
+  {id:"css",nom:"C2S",cat:"Santé",si:"i-heart",color:"#006b6b",cl:"#e0f4f4",fn:"Complémentaire Santé Solidaire",desc:"Mutuelle gratuite ou à 1€/mois pour les personnes à faibles revenus.",org:"Ameli / CPAM",lien:"https://www.ameli.fr",delai:"2 à 4 semaines",conds:["Revenus annuels inférieurs au plafond","Être assuré social"],docs:["Avis d'imposition","Justificatifs de revenus (3 mois)"],calcul(d){const rfr=(+d.revenus||0)*12,p=+d.personnes||1,g=p===1?9261:p===2?13892:18523;if(rfr<g)return{ok:true,m:0,t:"gratuit",label:"Gratuite"};if(rfr<g*1.35)return{ok:true,m:1,t:"mensuel",label:"1€/mois"};return{ok:false};}},
+  {id:"apa",nom:"APA",cat:"Santé",si:"i-senior",color:"#8b0052",cl:"#fce8f3",fn:"Allocation Personnalisée d'Autonomie",desc:"Aide pour les personnes de 60 ans et plus en perte d'autonomie.",org:"Conseil Départemental",lien:"https://www.service-public.fr",delai:"2 à 3 mois",conds:["Avoir 60 ans ou plus","Perte d'autonomie (GIR 1 à 4)","Résider en France"],docs:["Pièce d'identité","Justificatif de domicile","Évaluation GIR par travailleur social"],calcul(d){const age=+d.age||0;if(age<60||d.autonomie!=="oui")return{ok:false};const r=+d.revenus||0,m=r<800?1800:r<1500?1200:600;return{ok:true,m,t:"mensuel"};}},
+  {id:"af",nom:"Allocations Familiales",cat:"Famille",si:"i-child",color:"#a63800",cl:"#fff0e5",fn:"Allocations Familiales",desc:"Aide mensuelle pour les familles avec au moins 2 enfants à charge.",org:"CAF / MSA",lien:"https://www.caf.fr",delai:"1 mois",conds:["Au moins 2 enfants de moins de 20 ans","Résider en France"],docs:["Actes de naissance des enfants","Justificatif de domicile"],calcul(d){const e=+d.enfants||0,r=+d.revenus||0;if(e<2)return{ok:false};const b=e===2?140:e===3?320:500,m=r<3000?b:r<5000?Math.round(b*.5):Math.round(b*.25);return{ok:true,m,t:"mensuel"};}},
+  {id:"cf",nom:"Complément Familial",cat:"Famille",si:"i-users",color:"#a63800",cl:"#fff0e5",fn:"Complément Familial",desc:"Aide pour les familles d'au moins 3 enfants à revenus modestes.",org:"CAF / MSA",lien:"https://www.caf.fr",delai:"1 à 2 mois",conds:["3 enfants ou plus de 3 à 21 ans","Revenus inférieurs au plafond"],docs:["Actes de naissance","Justificatifs de revenus"],calcul(d){const e=+d.enfants||0,r=+d.revenus||0;if(e<3||r>3500)return{ok:false};return{ok:true,m:r<2000?280:178,t:"mensuel"};}},
+  {id:"are",nom:"ARE",cat:"Emploi",si:"i-bag",color:"#1e1f8e",cl:"#eaeaff",fn:"Allocation chômage (ARE)",desc:"Indemnisation chômage versée par France Travail après perte d'emploi.",org:"France Travail",lien:"https://www.francetravail.fr",delai:"7 jours de carence + instruction",conds:["Avoir travaillé 6 mois sur les 24 derniers mois","Être inscrit à France Travail","Rechercher activement un emploi"],docs:["Attestation employeur Pôle Emploi","Pièce d'identité","RIB"],calcul(d){if(d.travaille!=="chomage")return{ok:false};const r=+d.revenus||0,m=Math.max(32,Math.round(r*.57));return{ok:true,m,t:"mensuel"};}},
+  {id:"ass",nom:"ASS",cat:"Emploi",si:"i-doc",color:"#1e1f8e",cl:"#eaeaff",fn:"Allocation de Solidarité Spécifique",desc:"Aide pour les demandeurs d'emploi en fin de droits ARE.",org:"France Travail",lien:"https://www.francetravail.fr",delai:"1 mois",conds:["Avoir épuisé ses droits ARE","Avoir travaillé 5 ans dans les 10 ans précédant le chômage","Ressources insuffisantes"],docs:["Notification fin de droits ARE","Justificatifs de ressources","RIB"],calcul(d){if(d.fin_are!=="oui")return{ok:false};const r=+d.revenus||0,p=+d.personnes||1,pl=p===1?1166:1832;if(r>=pl)return{ok:false};return{ok:true,m:545,t:"mensuel"};}},
+  {id:"cpf",nom:"CPF",cat:"Emploi",si:"i-doc",color:"#1e1f8e",cl:"#eaeaff",fn:"Compte Personnel de Formation",desc:"Crédit formation financé par vos cotisations pour une formation professionnelle.",org:"Caisse des Dépôts",lien:"https://www.moncompteformation.gouv.fr",delai:"Variable selon la formation",conds:["Être salarié ou demandeur d'emploi","Avoir un projet de formation éligible"],docs:["Créer un compte sur moncompteformation.gouv.fr"],calcul(){return{ok:true,label:"Jusqu'à 5 000€ de crédit",t:"variable"};}},
+  {id:"aspa",nom:"ASPA",cat:"Retraite",si:"i-senior",color:"#8b0052",cl:"#fce8f3",fn:"Minimum Vieillesse (ASPA)",desc:"Minimum vieillesse pour les personnes retraitées à faibles ressources.",org:"Caisse de retraite",lien:"https://www.service-public.fr",delai:"2 à 4 mois",conds:["Avoir 65 ans ou plus","Résider en France","Revenus inférieurs au plafond"],docs:["Justificatif d'âge","Relevé de pension","Justificatif de domicile"],calcul(d){const age=+d.age||0;if(age<65)return{ok:false};const r=+d.revenus||0,p=+d.personnes||1,pl=p===1?1012:1572;if(r>=pl)return{ok:false};return{ok:true,m:Math.round(pl-r),t:"mensuel"};}},
+];
+
+const STEPS=[
+  {id:"travaille",q:"Quelle est votre situation professionnelle ?",si:"i-bag",sc:"var(--rf-blue)",bg:"var(--blue-light)",opts:[
+    {v:"oui",l:"Salarié(e) / Indépendant(e)",si:"i-bag",d:"CDI, CDD, intérim, auto-entrepreneur..."},
+    {v:"chomage",l:"Demandeur(se) d'emploi",si:"i-doc",d:"Inscrit(e) à France Travail"},
+    {v:"non",l:"Sans activité professionnelle",si:"i-home",d:"Parent au foyer, inactif(ve)..."},
+    {v:"retraite",l:"Retraité(e)",si:"i-senior",d:"Pensionné(e) ou préretraité(e)"},
+  ]},
+  {id:"age",q:"Quel est votre âge ?",si:"i-cal",sc:"var(--purple)",bg:"var(--purple-light)",type:"number",ph:"Exemple : 38",suf:"ans"},
+  {id:"revenus",q:"Revenus nets mensuels du foyer",si:"i-euro",sc:"var(--green)",bg:"var(--green-light)",type:"number",ph:"Exemple : 1 200",suf:"€ / mois"},
+  {id:"personnes",q:"Combien de personnes composent votre foyer ?",si:"i-users",sc:"var(--orange)",bg:"var(--orange-light)",opts:[
+    {v:"1",l:"1 personne",si:"i-person",d:"Vous seul(e)"},
+    {v:"2",l:"2 personnes",si:"i-users",d:"En couple ou avec un colocataire"},
+    {v:"3",l:"3 personnes",si:"i-users",d:"Avec 1 enfant ou un tiers"},
+    {v:"4",l:"4 personnes ou plus",si:"i-users",d:"Grande famille"},
+  ]},
+  {id:"enfants",q:"Combien d'enfants avez-vous à charge ?",si:"i-child",sc:"var(--orange)",bg:"var(--orange-light)",opts:[
+    {v:"0",l:"Aucun",si:"i-x",d:"Pas d'enfant à charge"},
+    {v:"1",l:"1 enfant",si:"i-child",d:"Un enfant à charge"},
+    {v:"2",l:"2 enfants",si:"i-child",d:"Deux enfants à charge"},
+    {v:"3",l:"3 enfants ou plus",si:"i-users",d:"Trois enfants ou plus"},
+  ]},
+  {id:"logement",q:"Quelle est votre situation de logement ?",si:"i-home",sc:"var(--purple)",bg:"var(--purple-light)",opts:[
+    {v:"locataire",l:"Locataire",si:"i-key",d:"Appartement ou maison en location"},
+    {v:"proprietaire",l:"Propriétaire",si:"i-home",d:"Avec ou sans crédit immobilier"},
+    {v:"heberge",l:"Hébergé(e) à titre gratuit",si:"i-users",d:"Chez un proche, en famille..."},
+  ]},
+  {id:"loyer",q:"Quel est le montant de votre loyer ?",si:"i-office",sc:"var(--purple)",bg:"var(--purple-light)",type:"number",ph:"Exemple : 650",suf:"€ / mois",cond:d=>d.logement==="locataire"},
+  {id:"handicap",q:"Bénéficiez-vous d'une reconnaissance de handicap ?",si:"i-person",sc:"var(--amber)",bg:"var(--amber-light)",opts:[
+    {v:"oui",l:"Oui",si:"i-check",d:"RQTH, notification MDPH, carte d'invalidité..."},
+    {v:"non",l:"Non",si:"i-x",d:"Pas de reconnaissance de handicap officielle"},
+  ]},
+  {id:"autonomie",q:"Avez-vous une perte d'autonomie dans le quotidien ?",si:"i-heart",sc:"var(--pink)",bg:"var(--pink-light)",opts:[
+    {v:"oui",l:"Oui",si:"i-check",d:"Difficultés pour se laver, se nourrir, se déplacer..."},
+    {v:"non",l:"Non",si:"i-x",d:"Autonomie complète préservée"},
+  ]},
+  {id:"fin_are",q:"Avez-vous épuisé vos droits chômage (ARE) ?",si:"i-clock",sc:"var(--indigo)",bg:"var(--indigo-light)",opts:[
+    {v:"oui",l:"Oui, droits épuisés",si:"i-warn",d:"L'allocation chômage ARE est terminée"},
+    {v:"non",l:"Non",si:"i-x",d:"Je bénéficie encore de droits ARE"},
+  ],cond:d=>d.travaille==="chomage"},
+];
+
+let sd={},si=0,done=false,res=[],ch=[],ct="Toutes";
+function gp(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');document.getElementById('nav-'+id).classList.add('active');window.scrollTo(0,0);}
+function startSim(){if(done){done=false;sd={};si=0;}gp('simulateur');renderSim();}
+function gvs(){return STEPS.filter(s=>!s.cond||s.cond(sd));}
+function fmtM(r){if(r.label)return r.label;if(r.t==="gratuit")return"Gratuit";if(r.t==="annuel")return`${r.m}€/an`;if(r.m!=null)return`~${r.m}€/mois`;return"Variable";}
+
+function renderSim(){
+  const steps=gvs(),step=steps[si],isLast=si===steps.length-1;
+  let h=`<div class="progress-wrap"><div class="progress-info"><span style="font-size:12px;color:var(--muted);">Étape <strong style="color:var(--navy);">${si+1}</strong> / ${steps.length}</span><span class="pill" style="background:var(--blue-light);color:var(--rf-blue);">${Math.round(((si+1)/steps.length)*100)}%</span></div><div class="progress-bar">${steps.map((_,i)=>`<div class="progress-seg${i<=si?' done':''}"></div>`).join('')}</div></div>`;
+  h+=`<div class="step-icon-wrap" style="background:${step.bg||'var(--blue-light)'};">${ic(step.si,24,step.sc||'var(--rf-blue)')}</div>`;
+  h+=`<div class="step-label">Question ${si+1}</div>`;
+  h+=`<div class="step-q">${step.q}</div>`;
+  if(step.opts){
+    h+=`<div class="step-options">`;
+    step.opts.forEach(opt=>{
+      const sel=sd[step.id]===opt.v;
+      h+=`<button class="opt-btn${sel?' selected':''}" onclick="selO('${step.id}','${opt.v}')">
+        <div class="opt-icon-wrap">${ic(opt.si,18,sel?'#fff':step.sc||'var(--rf-blue)')}</div>
+        <div style="flex:1;"><div class="opt-label">${opt.l}</div><div class="opt-desc">${opt.d}</div></div>
+        ${sel?`<div class="opt-check">${ic('i-check',12,'#fff')}</div>`:''}
+      </button>`;
+    });
+    h+=`</div>`;
+  } else {
+    h+=`<div class="num-wrap"><input class="num-input" type="number" id="ni" value="${sd[step.id]||''}" placeholder="${step.ph}" oninput="sd['${step.id}']=this.value;ub()" onkeydown="if(event.key==='Enter'&&sd['${step.id}'])goN()"/><span class="num-suf">${step.suf}</span></div>`;
+  }
+  h+=`<div class="step-nav">${si>0?`<button class="btn-back" onclick="goB()">${ic('i-cl',14,'var(--muted)')}Retour</button>`:''}<button class="btn-next${sd[step.id]?' ready':''}" id="bn" onclick="goN()"${sd[step.id]?'':' disabled'}>${isLast?`${ic('i-search',15,'#fff')}Calculer mes droits`:`Continuer${ic('i-cr',15,'#fff')}`}</button></div>`;
+  h+=`<p class="privacy-note">${ic('i-lock',11,'var(--muted)')}Données anonymes — aucun stockage</p>`;
+  document.getElementById('sim-container').innerHTML=h;
+}
+function ub(){const step=gvs()[si],btn=document.getElementById('bn');if(btn){btn.className='btn-next'+(sd[step.id]?' ready':'');btn.disabled=!sd[step.id];}}
+function selO(id,v){sd[id]=v;const step=gvs()[si];if(step.id===id)setTimeout(()=>goN(),170);else renderSim();}
+function goN(){const steps=gvs(),step=steps[si];if(!sd[step.id])return;if(si===steps.length-1){finSim();return;}si++;renderSim();}
+function goB(){if(si===0)return;si--;renderSim();}
+function finSim(){done=true;res=AIDES.map(a=>({...a,result:a.calcul(sd)}));const el=res.filter(r=>r.result.ok);document.getElementById('eb').textContent=el.length;document.getElementById('eb').style.display=el.length?'inline':'none';gp('resultats');renderRes();}
+
+function renderRes(){
+  const el=res.filter(r=>r.result.ok),tot=el.reduce((s,a)=>s+(a.result.m||0),0),cats=[...new Set(el.map(a=>a.cat))],disp=ct==="Toutes"?el:el.filter(a=>a.cat===ct);
+  let h=`<div class="res-banner"><div style="flex:1;min-width:150px;"><div class="res-total-label">Estimation mensuelle totale</div><div class="res-total-num">${tot}€</div><div class="res-total-sub">soit environ ${(tot*12).toLocaleString('fr-FR')}€ par an</div></div><div style="display:flex;gap:20px;flex-wrap:wrap;"><div><div class="res-stat-n" style="color:#86efac;">${el.length}</div><div class="res-stat-l">aides éligibles</div></div><div><div class="res-stat-n" style="color:#93c5fd;">${cats.length}</div><div class="res-stat-l">catégories</div></div></div></div>`;
+  h+=`<div class="disclaimer">${ic('i-warn',16,'var(--amber)')}<p><strong>Estimation indicative.</strong> Les montants réels sont calculés par les organismes compétents (CAF, France Travail, MDPH…) après étude de votre dossier.</p></div>`;
+  h+=`<div class="tabs"><button class="tab-btn${ct==='Toutes'?' active':''}" onclick="setT('Toutes')">Toutes (${el.length})</button>${cats.map(c=>`<button class="tab-btn${ct===c?' active':''}" onclick="setT('${c}')">${c} (${el.filter(a=>a.cat===c).length})</button>`).join('')}</div>`;
+  disp.forEach(a=>{
+    h+=`<div class="aide-card" id="a-${a.id}"><div class="aide-header" onclick="togA('${a.id}')"><div class="aide-icon-box" style="background:${a.cl};">${ic(a.si,18,a.color)}</div><div style="flex:1;min-width:0;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;flex-wrap:wrap;"><span class="aide-name">${a.nom}</span><span class="aide-cat-pill" style="background:${a.cl};color:${a.color};">${a.cat}</span></div><div class="aide-desc-s">${a.desc}</div></div><div class="aide-montant" style="color:${a.color};">${fmtM(a.result)}</div><span class="aide-arrow">${ic('i-cr',16,'var(--muted)')}</span></div>
+    <div class="aide-body"><div class="aide-2col"><div><div class="aide-sec-title">Conditions d'éligibilité</div>${a.conds.map(c=>`<div class="aide-li">${ic('i-check',12,'var(--green)')}<span>${c}</span></div>`).join('')}</div><div><div class="aide-sec-title">Documents à fournir</div>${a.docs.map(d=>`<div class="aide-li">${ic('i-doc',12,'var(--rf-blue)')}<span>${d}</span></div>`).join('')}</div></div><div class="aide-foot"><span class="aide-meta">${ic('i-clock',12,'var(--muted)')}<strong>Délai :</strong>${a.delai}</span><span class="aide-meta">${ic('i-office',12,'var(--muted)')}<strong>${a.org}</strong></span><a href="${a.lien}" target="_blank" class="btn-demande" style="background:${a.color};">Faire ma demande${ic('i-right',12,'#fff')}</a></div></div></div>`;
+  });
+  const ne=res.filter(r=>!r.result.ok);
+  h+=`<details style="margin-bottom:18px;"><summary>${ic('i-cr',13,'var(--muted)')}Aides non éligibles dans votre situation (${ne.length})</summary><div class="non-elig-grid">${ne.map(a=>`<div class="non-elig-card">${ic(a.si,14,a.color)}<div><div style="font-weight:700;font-size:11px;color:var(--navy);">${a.nom}</div><div style="font-size:10px;color:var(--muted);">Non éligible</div></div></div>`).join('')}</div></details>`;
+  h+=`<div class="card" style="margin-bottom:14px;"><h3 style="font-size:17px;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;">${ic('i-map',16,'var(--rf-blue)')}Vos prochaines étapes</h3>`;
+  [{n:"1",t:"Créer un compte CAF.fr",d:"Pour APL, RSA, allocations familiales…",href:"https://www.caf.fr",c:"#003189"},{n:"2",t:"S'inscrire sur France Travail",d:"Pour ARE, ASS et aides à la mobilité",href:"https://www.francetravail.fr",c:"#1e1f8e"},{n:"3",t:"Contacter la MDPH de votre département",d:"Pour AAH, PCH, RQTH et carte mobilité inclusion",href:"https://www.mdph.fr",c:"#8b4f00"},{n:"4",t:"Portail MesDroitsSociaux.gouv.fr",d:"Centralisez toutes vos démarches en un seul endroit",href:"https://www.mesdroitssociaux.gouv.fr",c:"#006b6b"}].forEach(s=>{h+=`<a href="${s.href}" target="_blank" class="step-link"><div class="step-num" style="background:${s.c};">${s.n}</div><div><div class="step-lt">${s.t}</div><div class="step-ld">${s.d}</div></div>${ic('i-right',14,s.c)}</a>`;});
+  h+=`</div><button onclick="startSim()" style="width:100%;padding:11px;background:var(--white);border:1.5px solid var(--border);border-radius:6px;color:var(--muted);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;font-family:'Marianne',Arial,sans-serif;">${ic('i-refresh',13,'var(--muted)')}Nouvelle simulation</button>`;
+  document.getElementById('rc').innerHTML=h;
+}
+function togA(id){document.getElementById('a-'+id).classList.toggle('open');}
+function setT(t){ct=t;renderRes();}
+
+function setSug(t){document.getElementById('chat-input').value=t;}
+async function sendChat(){
+  const inp=document.getElementById('chat-input'),txt=inp.value.trim();if(!txt)return;inp.value='';
+  addMsg('user',txt);ch.push({role:'user',content:txt});
+  const el=res.filter(r=>r.result.ok),tot=el.reduce((s,a)=>s+(a.result.m||0),0);
+  const sys=`Tu es un expert bienveillant en droits sociaux français nommé Conseiller DroisNet. Réponds en français, clairement et avec précision, en 3-4 phrases maximum. Situation : travaille=${sd.travaille||'?'}, revenus=${sd.revenus||'?'}€/mois, ${sd.personnes||'?'} personne(s), logement=${sd.logement||'?'}, loyer=${sd.loyer||'N/A'}€, handicap=${sd.handicap||'?'}, âge=${sd.age||'?'}ans, enfants=${sd.enfants||0}. Aides éligibles : ${el.map(a=>`${a.nom}(~${a.result.m||'variable'}€)`).join(', ')||'simulation non effectuée'}. Total estimé : ${tot}€/mois.`;
+  const did='d'+Date.now();
+  addMsg('ai',`<div class="loading-dots" id="${did}"><span></span><span></span><span></span></div>`);
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:ch})});
+    const j=await r.json(),rep=j.content?.[0]?.text||'Désolé, une erreur est survenue.';
+    ch.push({role:'assistant',content:rep});
+    const e=document.getElementById(did);if(e)e.closest('.msg').innerHTML=rep;
+  }catch(e){const el2=document.getElementById(did);if(el2)el2.closest('.msg').innerHTML='Une erreur est survenue. Vérifiez votre connexion.';}
+}
+function addMsg(role,content){const w=document.getElementById('chat-messages'),d=document.createElement('div');d.className=`msg ${role}`;d.innerHTML=content;w.appendChild(d);w.scrollTop=w.scrollHeight;}
+
+const MODELS=[
+  {si:"i-person",t:"Freemium",c:"#003189",bg:"var(--blue-light)",badge:"Recommandé pour démarrer",desc:"Version gratuite enrichie d'un abonnement premium pour les fonctions avancées.",
+    html:`<div class="plan-grid"><div class="plan-card"><div class="plan-name">Gratuit</div><div class="plan-price" style="color:var(--muted);">0€</div><div class="plan-feat">${ic('i-check',12,'var(--muted)')}<span>Simulation 5 aides</span></div><div class="plan-feat">${ic('i-check',12,'var(--muted)')}<span>Résultats basiques</span></div></div><div class="plan-card" style="border-color:#003189;background:#e8eeff33;"><div class="plan-name">Premium</div><div class="plan-price" style="color:#003189;">4,99€ / mois</div><div class="plan-feat">${ic('i-check',12,'#003189')}<span>Toutes les aides</span></div><div class="plan-feat">${ic('i-check',12,'#003189')}<span>Assistant IA illimité</span></div><div class="plan-feat">${ic('i-check',12,'#003189')}<span>Alertes &amp; rappels</span></div><div class="plan-feat">${ic('i-check',12,'#003189')}<span>Export PDF</span></div></div><div class="plan-card"><div class="plan-name">Famille</div><div class="plan-price" style="color:#5e2d91;">9,99€ / mois</div><div class="plan-feat">${ic('i-check',12,'#5e2d91')}<span>3 profils</span></div><div class="plan-feat">${ic('i-check',12,'#5e2d91')}<span>Conseiller dédié</span></div><div class="plan-feat">${ic('i-check',12,'#5e2d91')}<span>Historique 12 mois</span></div></div></div><div class="pot-box" style="background:var(--blue-light);border:1px solid #93c5fd;">${ic('i-up',16,'#003189')}<span style="color:#003189;">1 000 abonnés premium = 4 990€/mois</span></div>`},
+  {si:"i-office",t:"B2B",c:"#00704a",bg:"var(--green-light)",badge:"Le plus rentable",desc:"Vendre l'outil directement aux professionnels du travail social et aux collectivités locales.",
+    html:`<div class="client-row"><div><div class="client-n">Mairies &amp; CCAS</div><div class="client-d">Outil pour les agents sociaux</div></div><span class="pill" style="background:var(--green-light);color:var(--green);">200 – 500€ / mois</span></div><div class="client-row"><div><div class="client-n">Associations</div><div class="client-d">Croix-Rouge, Restos du Cœur...</div></div><span class="pill" style="background:var(--green-light);color:var(--green);">100 – 300€ / mois</span></div><div class="client-row"><div><div class="client-n">Mutuelles</div><div class="client-d">Intégration au portail client</div></div><span class="pill" style="background:var(--green-light);color:var(--green);">500 – 2 000€ / mois</span></div><div class="client-row"><div><div class="client-n">Employeurs (service RH)</div><div class="client-d">Aide aux salariés en difficulté</div></div><span class="pill" style="background:var(--green-light);color:var(--green);">300 – 1 000€ / mois</span></div><div class="client-row"><div><div class="client-n">Travailleurs sociaux</div><div class="client-d">Licences individuelles</div></div><span class="pill" style="background:var(--green-light);color:var(--green);">50€ / utilisateur / mois</span></div><div class="pot-box" style="background:var(--green-light);border:1px solid #6ee7c7;">${ic('i-up',16,'var(--green)')}<span style="color:var(--green);">20 mairies × 300€ = 6 000€ / mois</span></div>`},
+  {si:"i-hand",t:"Affiliation",c:"#5e2d91",bg:"var(--purple-light)",badge:"Revenus passifs",desc:"Percevoir des commissions sur les souscriptions et mises en relation générées par la plateforme.",
+    html:`<div class="client-row"><div><div class="client-n">Mutuelles santé</div></div><span class="pill" style="background:var(--purple-light);color:var(--purple);">50 – 150€ par lead</span></div><div class="client-row"><div><div class="client-n">Avocats / conseillers spécialisés</div></div><span class="pill" style="background:var(--purple-light);color:var(--purple);">Mise en relation 20 – 80€</span></div><div class="client-row"><div><div class="client-n">Banques sociales</div></div><span class="pill" style="background:var(--purple-light);color:var(--purple);">Partenariat sponsorisé</span></div><div class="client-row"><div><div class="client-n">Formations en ligne</div></div><span class="pill" style="background:var(--purple-light);color:var(--purple);">10 – 20% du montant</span></div><div class="pot-box" style="background:var(--purple-light);border:1px solid #c4b5fd;">${ic('i-up',16,'var(--purple)')}<span style="color:var(--purple);">500 leads/mois × 80€ = 40 000€ potentiel</span></div>`},
+  {si:"i-medal",t:"Subventions",c:"#8b4f00",bg:"var(--amber-light)",badge:"Financement public",desc:"L'État finance les projets d'inclusion numérique — sans dilution de capital ni remboursement.",
+    html:`<div class="client-row"><div><div class="client-n">French Tech</div><div class="client-d">Startup tech à impact social</div></div><span class="pill" style="background:var(--amber-light);color:var(--amber);">Jusqu'à 30 000€</span></div><div class="client-row"><div><div class="client-n">BPI France</div><div class="client-d">Projets innovants à impact</div></div><span class="pill" style="background:var(--amber-light);color:var(--amber);">Prêts à taux zéro</span></div><div class="client-row"><div><div class="client-n">CAF / CNAF</div><div class="client-d">Inclusion numérique</div></div><span class="pill" style="background:var(--amber-light);color:var(--amber);">Appels à projets</span></div><div class="client-row"><div><div class="client-n">Région / Département</div><div class="client-d">Projet d'intérêt local</div></div><span class="pill" style="background:var(--amber-light);color:var(--amber);">5 000 – 50 000€</span></div><div class="pot-box" style="background:var(--amber-light);border:1px solid #fcd34d;">${ic('i-up',16,'var(--amber)')}<span style="color:var(--amber);">Combinable avec tous les autres modèles</span></div>`},
+];
+let cm=0;
+function sm(i){
+  cm=i;
+  document.querySelectorAll('.model-tab').forEach((b,j)=>{
+    const m=MODELS[j];b.classList.toggle('active',j===i);
+    b.style.background=j===i?m.c:'var(--white)';b.style.color=j===i?'#fff':'var(--muted)';b.style.borderColor=j===i?m.c:'var(--border)';
+  });
+  const m=MODELS[i];
+  document.getElementById('mc').innerHTML=`<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">${ic(m.si,28,m.c)}<div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;"><h3 style="font-size:18px;color:var(--navy);">${m.t}</h3><span class="pill" style="background:${m.bg};color:${m.c};">${m.badge}</span></div><p style="color:var(--muted);font-size:13px;">${m.desc}</p></div></div>${m.html}`;
+}
+sm(0);renderSim();
+</script>
+</body>
+</html>
