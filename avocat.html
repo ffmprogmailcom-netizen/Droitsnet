@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Avocat IA — Conseil juridique | DroisNet</title>
+<link href="https://fonts.googleapis.com/css2?family=Marianne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f5f6fa;--white:#fff;--navy:#1b2a4a;--slate:#3a4e6e;--muted:#7b8fa8;
+  --border:#d9e2ef;--gold:#b5860d;--gold-light:#fdf5e0;--gold-border:#e6c97a;
+  --blue:#003189;--blue-light:#e8eeff;--blue-mid:#1553c7;
+  --green:#00704a;--green-light:#e5f5ee;
+  --amber:#8b4f00;--amber-light:#fff3e0;
+  --purple:#5e2d91;--purple-light:#f0e9fb;
+  --teal:#006b6b;--teal-light:#e0f4f4;
+  --orange:#a63800;--orange-light:#fff0e5;
+  --red:#b50000;--red-light:#fee2e2;
+  --indigo:#1e1f8e;--indigo-light:#eaeaff;
+  --pink:#8b0052;--pink-light:#fce8f3;
+}
+body{font-family:'Marianne','Source Sans Pro',Arial,sans-serif;background:var(--bg);color:var(--navy);min-height:100vh;}
+h1,h2,h3{font-family:'Marianne',Arial,sans-serif;font-weight:800;}
+button{cursor:pointer;font-family:'Marianne',Arial,sans-serif;transition:all .15s;}
+input,textarea{font-family:'Marianne',Arial,sans-serif;}
+svg{display:inline-block;vertical-align:middle;}
+
+nav{background:var(--white);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,49,137,.10);}
+.nav-inner{max-width:1000px;margin:0 auto;padding:0 20px;display:flex;align-items:center;height:60px;gap:12px;}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;}
+.logo-text{font-size:18px;font-weight:800;color:var(--navy);}
+.back-btn{margin-left:auto;padding:8px 14px;border-radius:6px;border:1.5px solid var(--border);background:var(--white);color:var(--muted);font-size:12px;font-weight:700;display:flex;align-items:center;gap:5px;}
+.premium-nav-btn{padding:8px 14px;border-radius:6px;border:none;background:linear-gradient(135deg,#b5860d,#d4a017);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;gap:5px;box-shadow:0 2px 8px rgba(181,134,13,.3);}
+
+.rf-banner{background:var(--navy);padding:7px 20px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.rf-flag{display:flex;height:14px;width:22px;border-radius:2px;overflow:hidden;flex-shrink:0;}
+.rf-flag-b{flex:1;background:#002395;}
+.rf-flag-w{flex:1;background:#fff;}
+.rf-flag-r{flex:1;background:#ED2939;}
+.rf-banner-text{color:rgba(255,255,255,.65);font-size:11px;font-weight:600;}
+
+.container{max-width:960px;margin:0 auto;padding:32px 16px 80px;}
+
+/* FREEMIUM BANNER */
+.free-banner{background:linear-gradient(135deg,#b5860d,#c9930e);border-radius:12px;padding:16px 22px;margin-bottom:24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.free-banner-text{color:#fff;font-size:14px;font-weight:700;flex:1;}
+.free-banner-sub{color:rgba(255,255,255,.75);font-size:12px;margin-top:2px;}
+.btn-premium-main{padding:10px 20px;border-radius:8px;border:2px solid rgba(255,255,255,.8);background:transparent;color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;gap:6px;font-family:'Marianne',Arial,sans-serif;flex-shrink:0;}
+.btn-premium-main:hover{background:rgba(255,255,255,.15);}
+
+/* CREDITS COUNTER */
+.credits-bar{background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:12px 18px;margin-bottom:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.credits-num{font-size:28px;font-weight:800;color:var(--navy);line-height:1;}
+.credits-label{font-size:12px;color:var(--muted);}
+.credits-bar-wrap{flex:1;min-width:120px;}
+.credits-progress{height:6px;background:var(--border);border-radius:99px;overflow:hidden;margin-top:6px;}
+.credits-fill{height:100%;border-radius:99px;transition:width .4s ease;background:linear-gradient(90deg,var(--green),#34d399);}
+.credits-fill.warn{background:linear-gradient(90deg,#f59e0b,#fbbf24);}
+.credits-fill.low{background:linear-gradient(90deg,var(--red),#f87171);}
+.btn-recharge{padding:8px 16px;border-radius:6px;border:none;background:linear-gradient(135deg,#b5860d,#d4a017);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;gap:5px;font-family:'Marianne',Arial,sans-serif;}
+
+/* HERO */
+.hero-bar{background:linear-gradient(135deg,var(--navy),#243b6e);border-radius:14px;padding:26px 30px;margin-bottom:22px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.hero-icon{width:56px;height:56px;border-radius:12px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hero-title{color:#fff;font-size:20px;font-weight:800;margin-bottom:4px;}
+.hero-sub{color:rgba(255,255,255,.55);font-size:13px;line-height:1.6;}
+.hero-badges{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px;}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+.hero-badge.gold{background:rgba(181,134,13,.3);color:#fde68a;}
+
+.disclaimer{background:var(--amber-light);border-left:4px solid #e65100;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:20px;display:flex;gap:10px;align-items:flex-start;}
+.disclaimer p{font-size:12px;color:#8b4500;line-height:1.65;}
+
+/* CATS GRID */
+.cats-section{margin-bottom:24px;}
+.cats-section h3{font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;}
+.cat-btn{background:var(--white);border:2px solid var(--border);border-radius:10px;padding:12px 10px;text-align:center;transition:all .15s;cursor:pointer;position:relative;}
+.cat-btn:hover{border-color:var(--blue);box-shadow:0 3px 12px rgba(0,49,137,.1);}
+.cat-btn.active{border-color:var(--blue);background:var(--blue-light);}
+.cat-btn .premium-lock{position:absolute;top:6px;right:6px;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#b5860d,#d4a017);display:flex;align-items:center;justify-content:center;}
+.cat-icon-w{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 7px;}
+.cat-lbl{font-weight:800;font-size:11px;color:var(--navy);line-height:1.3;}
+.cat-dsc{font-size:10px;color:var(--muted);margin-top:2px;}
+
+.q-rapides{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+.q-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--slate);font-weight:600;cursor:pointer;transition:all .15s;font-family:'Marianne',Arial,sans-serif;}
+.q-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light);}
+
+/* CHAT */
+.chat-wrap{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(27,42,74,.07);}
+.chat-head{background:linear-gradient(135deg,var(--navy),#243b6e);padding:14px 18px;display:flex;align-items:center;gap:12px;}
+.chat-av{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.chat-name{color:#fff;font-weight:800;font-size:14px;}
+.chat-status{color:#86efac;font-size:11px;display:flex;align-items:center;gap:4px;margin-top:1px;}
+.chat-dot{width:6px;height:6px;border-radius:50%;background:#86efac;display:inline-block;}
+.chat-theme-badge{background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-left:auto;}
+.chat-msgs{height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--white);}
+.msg{max-width:85%;padding:10px 14px;font-size:13px;line-height:1.7;}
+.msg.user{align-self:flex-end;background:var(--blue);color:#fff;border-radius:14px 14px 3px 14px;}
+.msg.ai{align-self:flex-start;background:#f1f5fb;color:var(--slate);border-radius:3px 14px 14px 14px;}
+.msg.ai strong{color:var(--navy);}
+.msg-time{font-size:10px;opacity:.45;margin-top:3px;display:block;}
+.typing{align-self:flex-start;background:#f1f5fb;border-radius:3px 14px 14px 14px;padding:11px 16px;}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--muted);display:inline-block;animation:dot 1s infinite;}
+.typing span:nth-child(2){animation-delay:.15s;}
+.typing span:nth-child(3){animation-delay:.3s;}
+@keyframes dot{0%,80%,100%{transform:scale(0)}40%{transform:scale(1.2)}}
+
+/* PAYWALL MSG */
+.paywall-msg{background:linear-gradient(135deg,#fdf5e0,#fef9ee);border:1.5px solid var(--gold-border);border-radius:10px;padding:18px 20px;margin:12px 16px;text-align:center;}
+.paywall-msg h4{font-size:15px;color:var(--amber);margin-bottom:6px;}
+.paywall-msg p{font-size:12px;color:#8b6000;margin-bottom:14px;line-height:1.6;}
+.btn-unlock{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;border:none;background:linear-gradient(135deg,#b5860d,#d4a017);color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:'Marianne',Arial,sans-serif;box-shadow:0 3px 12px rgba(181,134,13,.3);}
+
+.chat-footer{background:var(--white);border-top:1px solid var(--border);padding:12px 16px;}
+.chat-inp-row{display:flex;gap:8px;margin-bottom:8px;}
+.chat-inp{flex:1;padding:10px 13px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;color:var(--navy);outline:none;background:var(--bg);resize:none;min-height:40px;max-height:90px;}
+.chat-inp:focus{border-color:var(--blue);}
+.chat-inp:disabled{opacity:.5;cursor:not-allowed;}
+.chat-send{padding:10px 18px;border-radius:8px;border:none;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;gap:5px;font-family:'Marianne',Arial,sans-serif;align-self:flex-end;}
+.chat-send:disabled{opacity:.4;cursor:not-allowed;}
+.chat-acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.act-btn{background:var(--blue-light);border:none;border-radius:4px;padding:4px 10px;font-size:11px;color:var(--blue);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;font-family:'Marianne',Arial,sans-serif;}
+.credits-mini{margin-left:auto;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px;}
+.credits-mini strong{color:var(--navy);}
+
+/* MODAL PREMIUM */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:999;align-items:center;justify-content:center;padding:20px;}
+.modal-bg.open{display:flex;}
+.modal{background:var(--white);border-radius:18px;padding:32px;max-width:460px;width:100%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.25);}
+.modal-close{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.modal h2{font-size:22px;color:var(--navy);margin-bottom:6px;}
+.modal-sub{font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.6;}
+.plan-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+.plan-c{border:2px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;}
+.plan-c:hover{border-color:var(--blue);}
+.plan-c.selected{border-color:var(--blue);background:var(--blue-light);}
+.plan-c.featured{border-color:#b5860d;background:var(--gold-light);}
+.plan-name{font-weight:800;font-size:14px;color:var(--navy);margin-bottom:4px;}
+.plan-price{font-size:22px;font-weight:800;margin-bottom:8px;}
+.plan-feat{font-size:11px;color:var(--muted);display:flex;gap:5px;margin-bottom:4px;align-items:center;}
+.btn-pay{width:100%;padding:13px;border-radius:10px;border:none;background:linear-gradient(135deg,#b5860d,#d4a017);color:#fff;font-size:14px;font-weight:800;cursor:pointer;font-family:'Marianne',Arial,sans-serif;box-shadow:0 4px 16px rgba(181,134,13,.3);display:flex;align-items:center;justify-content:center;gap:8px;}
+.secure-note{text-align:center;font-size:11px;color:var(--muted);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:4px;}
+
+/* RESSOURCES */
+.ressources{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:22px;}
+.res-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:13px 15px;display:flex;gap:10px;align-items:flex-start;}
+.res-icon{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.res-title{font-weight:800;font-size:12px;color:var(--navy);margin-bottom:2px;}
+.res-desc{font-size:11px;color:var(--muted);line-height:1.5;}
+.res-link{font-size:11px;color:var(--blue);font-weight:700;margin-top:3px;display:block;}
+
+footer{background:var(--navy);padding:22px 20px;text-align:center;}
+.footer-logo{color:#fff;font-weight:800;font-size:16px;margin-bottom:4px;}
+.footer-text{color:rgba(255,255,255,.35);font-size:11px;}
+
+@media(max-width:500px){
+  .cats{grid-template-columns:repeat(auto-fill,minmax(128px,1fr));}
+  .hero-bar{padding:18px;}
+  .container{padding:18px 12px 60px;}
+  .plan-cards{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-balance" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M3 6l9-3 9 3"/><path d="M3 6l4 8c0 2 2 2 2 2s2 0 2-2L7 6"/><path d="M21 6l-4 8c0 2-2 2-2 2s-2 0-2-2l4-8"/><line x1="3" y1="21" x2="21" y2="21"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="i-home2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="i-work" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-family" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-gavel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14l-4-4 6-6-4-4-6 6 4 4"/><path d="M14 14l5 5"/><line x1="2" y1="22" x2="9" y2="15"/></symbol>
+  <symbol id="i-health" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+  <symbol id="i-vote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h20v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8z"/><path d="M6 8V6a4 4 0 0 1 8 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></symbol>
+  <symbol id="i-tax" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="6" y1="8" x2="6.01" y2="8"/><line x1="10" y1="8" x2="18" y2="8"/><line x1="6" y1="12" x2="18" y2="12"/></symbol>
+  <symbol id="i-data" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+  <symbol id="i-immo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="13" rx="2"/><path d="M8 22V12h8v10"/><path d="M3 9l9-7 9 7"/><rect x="10" y="14" width="4" height="4"/></symbol>
+  <symbol id="i-noise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></symbol>
+  <symbol id="i-admin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M4 14h12M19.5 9a7.5 7.5 0 1 0 0 6"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+</svg>
+
+<!-- RF BANNER -->
+<div class="rf-banner">
+  <div class="rf-flag"><div class="rf-flag-b"></div><div class="rf-flag-w"></div><div class="rf-flag-r"></div></div>
+  <span class="rf-banner-text">Service d'information juridique · Droit français 2026 · Non substitut à un avocat qualifié</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><svg width="18" height="18" style="color:#fff;"><use href="#i-shield"/></svg></div>
+      <span class="logo-text">DroisNet</span>
+    </a>
+    <span style="color:var(--border);font-size:16px;margin:0 2px;">›</span>
+    <span style="font-size:13px;font-weight:800;color:var(--navy);display:flex;align-items:center;gap:5px;">
+      <svg width="15" height="15" style="color:var(--blue);"><use href="#i-balance"/></svg>Avocat IA
+    </span>
+    <button class="premium-nav-btn" onclick="openModal()">
+      <svg width="12" height="12"><use href="#i-star"/></svg>Premium — 4,99€/mois
+    </button>
+    <button class="back-btn" onclick="window.location.href='index.html'">
+      <svg width="12" height="12"><use href="#i-back"/></svg>Retour
+    </button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero-bar">
+    <div class="hero-icon"><svg width="28" height="28" style="color:#fff;"><use href="#i-balance"/></svg></div>
+    <div style="flex:1;min-width:180px;">
+      <div class="hero-title">Avocat IA — 15 domaines juridiques</div>
+      <div class="hero-sub">Conseil juridique en langage simple, basé sur le droit français en vigueur. Infractions, politique, famille, travail, immobilier et bien plus.</div>
+      <div class="hero-badges">
+        <span class="hero-badge"><svg width="10" height="10"><use href="#i-shield"/></svg>Confidentiel</span>
+        <span class="hero-badge">Droit FR 2026</span>
+        <span class="hero-badge">Disponible 24h/24</span>
+        <span class="hero-badge gold"><svg width="10" height="10"><use href="#i-star"/></svg>3 questions gratuites/jour</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREDITS BAR -->
+  <div class="credits-bar" id="credits-bar">
+    <div>
+      <div class="credits-num" id="credits-num">3</div>
+      <div class="credits-label">questions restantes aujourd'hui</div>
+    </div>
+    <div class="credits-bar-wrap">
+      <div style="font-size:11px;color:var(--muted);margin-bottom:3px;">Quota journalier gratuit</div>
+      <div class="credits-progress"><div class="credits-fill" id="credits-fill" style="width:100%"></div></div>
+    </div>
+    <button class="btn-recharge" onclick="openModal()">
+      <svg width="13" height="13"><use href="#i-star"/></svg>Illimité — 4,99€/mois
+    </button>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <svg width="17" height="17" style="color:#e65100;flex-shrink:0;margin-top:1px;"><use href="#i-warn"/></svg>
+    <p><strong>Information juridique uniquement.</strong> Cet assistant ne remplace pas un avocat qualifié. Pour toute procédure judiciaire, consultez un professionnel. <strong>Urgence : 15 · 17 · 18 · 3114</strong></p>
+  </div>
+
+  <!-- CATÉGORIES JURIDIQUES -->
+  <div class="cats-section">
+    <h3><svg width="13" height="13"><use href="#i-balance"/></svg>Domaines juridiques — Droit civil &amp; pénal</h3>
+    <div class="cats" id="cats-juridique">
+      <button class="cat-btn active" id="cat-permis" onclick="setCat('permis')">
+        <div class="cat-icon-w" style="background:#fff0e5;"><svg width="17" height="17" style="color:#a63800;"><use href="#i-car"/></svg></div>
+        <div class="cat-lbl">Permis de conduire</div><div class="cat-dsc">Points, retrait, alcool</div>
+      </button>
+      <button class="cat-btn" id="cat-voisinage" onclick="setCat('voisinage')">
+        <div class="cat-icon-w" style="background:#e8eeff;"><svg width="17" height="17" style="color:#003189;"><use href="#i-noise"/></svg></div>
+        <div class="cat-lbl">Voisinage &amp; Bruit</div><div class="cat-dsc">Tapage, nuisances</div>
+      </button>
+      <button class="cat-btn" id="cat-travail" onclick="setCat('travail')">
+        <div class="cat-icon-w" style="background:#eaeaff;"><svg width="17" height="17" style="color:#1e1f8e;"><use href="#i-work"/></svg></div>
+        <div class="cat-lbl">Droit du travail</div><div class="cat-dsc">Licenciement, harcèlement</div>
+      </button>
+      <button class="cat-btn" id="cat-famille" onclick="setCat('famille')">
+        <div class="cat-icon-w" style="background:#fff0e5;"><svg width="17" height="17" style="color:#a63800;"><use href="#i-family"/></svg></div>
+        <div class="cat-lbl">Famille &amp; Divorce</div><div class="cat-dsc">Garde, pension</div>
+      </button>
+      <button class="cat-btn" id="cat-logement" onclick="setCat('logement')">
+        <div class="cat-icon-w" style="background:#f0e9fb;"><svg width="17" height="17" style="color:#5e2d91;"><use href="#i-home2"/></svg></div>
+        <div class="cat-lbl">Logement &amp; Bail</div><div class="cat-dsc">Expulsion, caution</div>
+      </button>
+      <button class="cat-btn" id="cat-conso" onclick="setCat('conso')">
+        <div class="cat-icon-w" style="background:#e5f5ee;"><svg width="17" height="17" style="color:#00704a;"><use href="#i-shop"/></svg></div>
+        <div class="cat-lbl">Consommation</div><div class="cat-dsc">Arnaque, garantie</div>
+      </button>
+      <button class="cat-btn" id="cat-penal" onclick="setCat('penal')">
+        <div class="cat-icon-w" style="background:#fee2e2;"><svg width="17" height="17" style="color:#b50000;"><use href="#i-gavel"/></svg></div>
+        <div class="cat-lbl">Droit pénal</div><div class="cat-dsc">Infractions, garde à vue</div>
+      </button>
+      <button class="cat-btn" id="cat-sante" onclick="setCat('sante')">
+        <div class="cat-icon-w" style="background:#e0f4f4;"><svg width="17" height="17" style="color:#006b6b;"><use href="#i-health"/></svg></div>
+        <div class="cat-lbl">Santé &amp; Accident</div><div class="cat-dsc">Erreur médicale</div>
+      </button>
+      <button class="cat-btn" id="cat-immo" onclick="setCat('immo')">
+        <div class="cat-icon-w" style="background:#f0e9fb;"><svg width="17" height="17" style="color:#5e2d91;"><use href="#i-immo"/></svg></div>
+        <div class="cat-lbl">Immobilier</div><div class="cat-dsc">Achat, vente, vice caché</div>
+      </button>
+      <button class="cat-btn" id="cat-fisc" onclick="setCat('fisc')">
+        <div class="cat-icon-w" style="background:#e5f5ee;"><svg width="17" height="17" style="color:#00704a;"><use href="#i-tax"/></svg></div>
+        <div class="cat-lbl">Fiscalité</div><div class="cat-dsc">Impôts, contrôle fiscal</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- CATÉGORIES POLITIQUES & ADMINISTRATIVES -->
+  <div class="cats-section">
+    <h3><svg width="13" height="13"><use href="#i-vote"/></svg>Domaines politiques &amp; administratifs</h3>
+    <div class="cats" id="cats-politique">
+      <button class="cat-btn" id="cat-politique" onclick="setCat('politique')">
+        <div class="cat-icon-w" style="background:#e8eeff;"><svg width="17" height="17" style="color:#003189;"><use href="#i-vote"/></svg></div>
+        <div class="cat-lbl">Droit politique</div><div class="cat-dsc">Élections, partis, mandats</div>
+        <div class="premium-lock"><svg width="8" height="8" style="color:#fff;"><use href="#i-star"/></svg></div>
+      </button>
+      <button class="cat-btn" id="cat-admin" onclick="setCat('admin')">
+        <div class="cat-icon-w" style="background:#fce8f3;"><svg width="17" height="17" style="color:#8b0052;"><use href="#i-admin"/></svg></div>
+        <div class="cat-lbl">Droit administratif</div><div class="cat-dsc">Recours, préfecture, mairie</div>
+        <div class="premium-lock"><svg width="8" height="8" style="color:#fff;"><use href="#i-star"/></svg></div>
+      </button>
+      <button class="cat-btn" id="cat-data" onclick="setCat('data')">
+        <div class="cat-icon-w" style="background:#e0f4f4;"><svg width="17" height="17" style="color:#006b6b;"><use href="#i-data"/></svg></div>
+        <div class="cat-lbl">RGPD &amp; Données</div><div class="cat-dsc">Vie privée, surveillance</div>
+        <div class="premium-lock"><svg width="8" height="8" style="color:#fff;"><use href="#i-star"/></svg></div>
+      </button>
+      <button class="cat-btn" id="cat-etranger" onclick="setCat('etranger')">
+        <div class="cat-icon-w" style="background:#fff0e5;"><svg width="17" height="17" style="color:#a63800;"><use href="#i-euro"/></svg></div>
+        <div class="cat-lbl">Droit des étrangers</div><div class="cat-dsc">Titre de séjour, asile</div>
+        <div class="premium-lock"><svg width="8" height="8" style="color:#fff;"><use href="#i-star"/></svg></div>
+      </button>
+      <button class="cat-btn" id="cat-liberte" onclick="setCat('liberte')">
+        <div class="cat-icon-w" style="background:#eaeaff;"><svg width="17" height="17" style="color:#1e1f8e;"><use href="#i-shield"/></svg></div>
+        <div class="cat-lbl">Libertés publiques</div><div class="cat-dsc">Expression, manifestation</div>
+        <div class="premium-lock"><svg width="8" height="8" style="color:#fff;"><use href="#i-star"/></svg></div>
+      </button>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding:8px 12px;background:var(--gold-light);border:1px solid var(--gold-border);border-radius:8px;">
+      <svg width="14" height="14" style="color:var(--gold);"><use href="#i-star"/></svg>
+      <span style="font-size:12px;color:var(--amber);font-weight:700;">Les domaines politiques &amp; administratifs sont réservés aux abonnés Premium</span>
+      <button onclick="openModal()" style="margin-left:auto;padding:5px 12px;border-radius:5px;border:none;background:linear-gradient(135deg,#b5860d,#d4a017);color:#fff;font-size:11px;font-weight:800;cursor:pointer;font-family:'Marianne',Arial,sans-serif;">S'abonner</button>
+    </div>
+  </div>
+
+  <!-- QUESTIONS RAPIDES -->
+  <div style="margin-bottom:14px;">
+    <h3 style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;" id="q-title">Questions fréquentes — <span id="q-cat-label" style="color:var(--blue);text-transform:none;">Permis de conduire</span></h3>
+    <div class="q-rapides" id="q-rapides"></div>
+  </div>
+
+  <!-- CHAT -->
+  <div class="chat-wrap">
+    <div class="chat-head">
+      <div class="chat-av"><svg width="20" height="20" style="color:rgba(255,255,255,.9);"><use href="#i-balance"/></svg></div>
+      <div>
+        <div class="chat-name">Maître IA · DroisNet</div>
+        <div class="chat-status"><span class="chat-dot"></span>En ligne · Expert droit français</div>
+      </div>
+      <div class="chat-theme-badge" id="chat-theme-badge">Permis de conduire</div>
+    </div>
+    <div class="chat-msgs" id="chat-msgs"></div>
+    <div class="chat-footer">
+      <div class="chat-inp-row">
+        <textarea class="chat-inp" id="chat-inp" placeholder="Décrivez votre situation juridique..." rows="2"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg();}"></textarea>
+        <button class="chat-send" id="chat-send-btn" onclick="sendMsg()">
+          <svg width="13" height="13"><use href="#i-send"/></svg>Envoyer
+        </button>
+      </div>
+      <div class="chat-acts">
+        <button class="act-btn" onclick="clearChat()"><svg width="10" height="10"><use href="#i-refresh"/></svg>Nouvelle conv.</button>
+        <button class="act-btn" onclick="copyLast()"><svg width="10" height="10"><use href="#i-link"/></svg>Copier</button>
+        <div class="credits-mini" id="credits-mini">
+          <svg width="11" height="11" style="color:var(--gold);"><use href="#i-star"/></svg>
+          <strong id="credits-mini-num">3</strong> question(s) restante(s) aujourd'hui
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESSOURCES -->
+  <h3 style="font-size:14px;color:var(--navy);margin:26px 0 12px;display:flex;align-items:center;gap:7px;font-weight:800;">
+    <svg width="15" height="15" style="color:var(--blue);"><use href="#i-link"/></svg>Ressources officielles
+  </h3>
+  <div class="ressources">
+    <div class="res-card"><div class="res-icon" style="background:#e8eeff;"><svg width="16" height="16" style="color:#003189;"><use href="#i-balance"/></svg></div><div><div class="res-title">Service-Public.fr</div><div class="res-desc">Informations juridiques officielles</div><a href="https://www.service-public.fr" target="_blank" class="res-link">service-public.fr →</a></div></div>
+    <div class="res-card"><div class="res-icon" style="background:#e5f5ee;"><svg width="16" height="16" style="color:#00704a;"><use href="#i-phone"/></svg></div><div><div class="res-title">Aide juridictionnelle</div><div class="res-desc">Avocat gratuit si revenus modestes</div><a href="https://www.service-public.fr/particuliers/vosdroits/F18074" target="_blank" class="res-link">En savoir plus →</a></div></div>
+    <div class="res-card"><div class="res-icon" style="background:#fff0e5;"><svg width="16" height="16" style="color:#a63800;"><use href="#i-gavel"/></svg></div><div><div class="res-title">Trouver un avocat</div><div class="res-desc">Annuaire officiel des barreaux</div><a href="https://www.avocats.fr" target="_blank" class="res-link">avocats.fr →</a></div></div>
+    <div class="res-card"><div class="res-icon" style="background:#fee2e2;"><svg width="16" height="16" style="color:#b50000;"><use href="#i-phone"/></svg></div><div><div class="res-title">France Victimes</div><div class="res-desc">Aide aux victimes, permanences gratuites</div><a href="https://www.france-victimes.fr" target="_blank" class="res-link">france-victimes.fr →</a></div></div>
+  </div>
+</div>
+
+<!-- MODAL PREMIUM -->
+<div class="modal-bg" id="modal-bg" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">
+      <svg width="14" height="14" style="color:var(--muted);"><use href="#i-back"/></svg>
+    </button>
+    <div style="text-align:center;margin-bottom:16px;">
+      <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#b5860d,#d4a017);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+        <svg width="26" height="26" style="color:#fff;"><use href="#i-star"/></svg>
+      </div>
+      <h2>Passez au Premium</h2>
+      <p class="modal-sub">Questions illimitées + tous les domaines politiques et administratifs débloqués + priorité de réponse.</p>
+    </div>
+    <div class="plan-cards">
+      <div class="plan-c" id="plan-mensuel" onclick="selectPlan('mensuel')" style="cursor:pointer;">
+        <div class="plan-name">Mensuel</div>
+        <div class="plan-price" style="color:var(--blue);">4,99€<span style="font-size:13px;font-weight:600;color:var(--muted);">/mois</span></div>
+        <div class="plan-feat"><svg width="11" height="11" style="color:var(--green);"><use href="#i-check"/></svg>Questions illimitées</div>
+        <div class="plan-feat"><svg width="11" height="11" style="color:var(--green);"><use href="#i-check"/></svg>Tous les domaines</div>
+        <div class="plan-feat"><svg width="11" height="11" style="color:var(--green);"><use href="#i-check"/></svg>Résumé PDF</div>
+        <div class="plan-feat"><svg width="11" height="11" style="color:var(--green);"><use href="#i-check"/></svg>Résiliation à tout moment</div>
+      </div>
+      <div class="plan-c featured" id="plan-annuel" onclick="selectPlan('annuel')" style="cursor:pointer;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <div class="plan-name">Annuel</div>
+          <span style="background:#b5860d;color:#fff;font-size:10px;padding:2px 7px;border-radius:20px;font-weight:800;">-40%</span>
+        </div>
+        <div class="plan-price" style="color:#b5860d;">2,99€<span style="font-size:13px;font-weight:600;color:var(--muted);">/mois</span></div>
+        <div style="font-size:10px;color:var(--muted);margin-bottom:8px;">soit 35,88€/an</div>
+        <div class="plan-feat"><svg width="11" height="11" style="color:var(--green);"><use href="#i-check"/></svg>Questions illimitées</div>
+        <div class="plan-feat"><svg width="11" height="11" style="color:var(--green);"><use href="#i-check"/></svg>Tous les domaines</div>
+        <div class="plan-feat"><svg width="11" height="11" style="color:var(--green);"><use href="#i-check"/></svg>Résumé PDF</div>
+        <div class="plan-feat"><svg width="11" height="11" style="color:var(--green);"><use href="#i-check"/></svg>Support prioritaire</div>
+      </div>
+    </div>
+    <button class="btn-pay" id="btn-pay" onclick="handlePay()">
+      <svg width="15" height="15"><use href="#i-star"/></svg>
+      <span id="btn-pay-label">S'abonner à 4,99€/mois</span>
+    </button>
+    <p class="secure-note"><svg width="12" height="12" style="color:var(--green);"><use href="#i-lock"/></svg>Paiement sécurisé via Stripe · Résiliation à tout moment</p>
+    <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);text-align:center;">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--navy);">Déjà abonné ?</strong> Entrez votre code d'activation</p>
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="code-inp" placeholder="Code premium..." style="flex:1;padding:9px 13px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;color:var(--navy);outline:none;background:var(--bg);"/>
+        <button onclick="activateCode()" style="padding:9px 16px;border-radius:7px;border:none;background:var(--blue);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Marianne',Arial,sans-serif;">Activer</button>
+      </div>
+      <p id="code-msg" style="font-size:11px;color:var(--red);margin-top:6px;display:none;"></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">DroisNet · Avocat IA</div>
+  <div class="footer-text">Information juridique indicative uniquement · Ne remplace pas un avocat · France 2026</div>
+</footer>
+
+<script>
+const STRIPE_LINK_MENSUEL = "https://buy.stripe.com/REMPLACE_PAR_TON_LIEN_MENSUEL";
+const STRIPE_LINK_ANNUEL  = "https://buy.stripe.com/REMPLACE_PAR_TON_LIEN_ANNUEL";
+const FREE_LIMIT = 3;
+const PREMIUM_CATS = ['politique','admin','data','etranger','liberte'];
+
+// ─── STATE ─────────────────────────────────────────────────────────────────
+let credits = parseInt(localStorage.getItem('av_credits') || FREE_LIMIT);
+let lastReset = localStorage.getItem('av_reset') || '';
+let isPremium = localStorage.getItem('av_premium') === 'true';
+let currentCat = 'permis';
+let chatHistory = [];
+let lastAiMsg = '';
+let selectedPlan = 'mensuel';
+
+// ─── RESET DAILY ───────────────────────────────────────────────────────────
+const today = new Date().toDateString();
+if (lastReset !== today && !isPremium) {
+  credits = FREE_LIMIT;
+  localStorage.setItem('av_credits', credits);
+  localStorage.setItem('av_reset', today);
+}
+
+// ─── CATS DATA ─────────────────────────────────────────────────────────────
+const CATS = {
+  permis:{label:"Permis de conduire",premium:false,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur toutes les questions liées au **permis de conduire** : perte de points, retrait, alcool, stupéfiants, et recours. Posez votre question.",
+    questions:["J'ai perdu tous mes points, que faire ?","Mon permis a été suspendu, quels sont mes droits ?","Contrôle positif à l'alcool, quelles conséquences ?","Comment récupérer des points sur mon permis ?","Excès de vitesse de 30km/h, combien de points je perds ?","Peut-on conduire pendant une suspension ?"],
+    system:`Tu es Maître IA, expert en droit routier français (2026). Tu connais le Code de la route, les barèmes de retrait de points, les stages, les suspensions et annulations de permis. Réponds en français, clairement, max 5 phrases. Rappelle que c'est une information générale.`},
+  voisinage:{label:"Voisinage & Bruit",premium:false,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur les **conflits de voisinage** : tapage nocturne (interdit après 22h), nuisances sonores, troubles du voisinage, conflits de propriété. Posez votre question.",
+    questions:["Mon voisin fait du bruit la nuit, que puis-je faire ?","Quelle amende pour tapage nocturne ?","Comment porter plainte pour nuisances sonores ?","Mon voisin a empiété sur mon terrain, recours ?","Arbre dangereux chez mon voisin, que faire ?","Règles pour les barbecues entre voisins ?"],
+    system:`Tu es Maître IA, expert en droit du voisinage français (2026). Tu connais les règles sur le tapage nocturne, les troubles anormaux du voisinage, les procédures de médiation et recours. Réponds en français, max 5 phrases.`},
+  travail:{label:"Droit du travail",premium:false,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit du travail** : licenciement, harcèlement moral ou sexuel, rupture conventionnelle, heures supplémentaires. Posez votre question.",
+    questions:["J'ai été licencié sans raison valable, que faire ?","Mon employeur ne paie pas mes heures sup, recours ?","Qu'est-ce que le harcèlement moral ?","Comment demander une rupture conventionnelle ?","En arrêt maladie, peut-on me licencier ?","Droit au télétravail, est-ce obligatoire pour l'employeur ?"],
+    system:`Tu es Maître IA, expert en droit du travail français (2026). Tu connais le Code du travail, les prud'hommes, le harcèlement, la rupture conventionnelle. Réponds en français, max 5 phrases.`},
+  famille:{label:"Famille & Divorce",premium:false,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit de la famille** : divorce, garde des enfants, pension alimentaire, autorité parentale, succession. Posez votre question.",
+    questions:["Comment divorcer à l'amiable ?","Mon ex ne paie pas la pension alimentaire, que faire ?","Comment obtenir la garde de mes enfants ?","Qu'est-ce que la garde alternée ?","Mon conjoint veut partir avec les enfants à l'étranger ?","Comment contester un testament ?"],
+    system:`Tu es Maître IA, expert en droit de la famille français (2026). Tu connais le divorce, la garde, la pension alimentaire, les successions. Réponds en français, max 5 phrases.`},
+  logement:{label:"Logement & Bail",premium:false,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit du logement** : expulsion, caution, loyer impayé, travaux refusés, droits locataire/propriétaire. Posez votre question.",
+    questions:["Mon propriétaire ne rend pas ma caution ?","J'ai reçu un avis d'expulsion, mes droits ?","Mon propriétaire entre sans prévenir, légal ?","Logement insalubre, que faire ?","Propriétaire refuse les réparations urgentes ?","Comment résilier mon bail avant la fin ?"],
+    system:`Tu es Maître IA, expert en droit du logement français, loi Alur (2026). Réponds en français, max 5 phrases.`},
+  conso:{label:"Consommation",premium:false,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit de la consommation** : arnaques, remboursements refusés, garantie légale, livraison non reçue. Posez votre question.",
+    questions:["J'ai été arnaqué sur internet, que faire ?","Le vendeur refuse de me rembourser ?","Qu'est-ce que la garantie légale de conformité ?","Commande jamais reçue, comment agir ?","Me protéger du démarchage téléphonique ?","Prélèvement sans accord sur mon compte ?"],
+    system:`Tu es Maître IA, expert en droit de la consommation français (2026). Tu connais le Code de la consommation, la DGCCRF, le droit de rétractation. Réponds en français, max 5 phrases.`},
+  penal:{label:"Droit pénal",premium:false,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit pénal** : infractions, contraventions, délits, garde à vue, vos droits face à la justice. Posez votre question.",
+    questions:["Convocation au commissariat, que faire ?","Mes droits en garde à vue ?","Puis-je refuser de parler à la police ?","Amende forfaitaire délictuelle, recours ?","Différence entre contravention et délit ?","Comment effacer son casier judiciaire ?"],
+    system:`Tu es Maître IA, expert en droit pénal français (2026). Tu connais le Code pénal, la procédure pénale, les droits en garde à vue. Rappelle d'appeler le 17 si urgence. Réponds en français, max 5 phrases.`},
+  sante:{label:"Santé & Accident",premium:false,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit de la santé** : erreur médicale, accident de la route, accident du travail, indemnisation. Posez votre question.",
+    questions:["Erreur médicale, comment être indemnisé ?","Accident de la route sans tort ?","Mon employeur nie mon accident du travail ?","L'assurance refuse de payer, recours ?","Porter plainte contre un médecin ?","Droits d'un patient hospitalisé ?"],
+    system:`Tu es Maître IA, expert en droit de la santé et accidents français (2026). Tu connais la responsabilité médicale, les accidents du travail, la CRCI, les assurances. Réponds en français, max 5 phrases.`},
+  immo:{label:"Immobilier",premium:false,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit immobilier** : achat, vente, vice caché, copropriété, construction, servitudes. Posez votre question.",
+    questions:["Vice caché dans ma maison achetée, recours ?","Mon constructeur ne livre pas en temps, que faire ?","Charges de copropriété abusives ?","Voisin bloque la vue avec une construction ?","Compromis de vente, puis-je me rétracter ?","Droit de préemption de la mairie, comment ça marche ?"],
+    system:`Tu es Maître IA, expert en droit immobilier français (2026). Tu connais les vices cachés, la copropriété, la construction, les servitudes. Réponds en français, max 5 phrases.`},
+  fisc:{label:"Fiscalité",premium:false,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur la **fiscalité** : impôts sur le revenu, contrôle fiscal, TVA, droits de succession, fraude fiscale. Posez votre question.",
+    questions:["Contrôle fiscal, quels sont mes droits ?","Oubli de déclaration d'impôts, que faire ?","Droits de succession, comment ça marche ?","Auto-entrepreneur et TVA, quand la payer ?","Déduction fiscale pour garde d'enfant ?","Signaler une fraude fiscale anonymement ?"],
+    system:`Tu es Maître IA, expert en droit fiscal français (2026). Tu connais le Code général des impôts, les procédures de contrôle, la TVA, les successions. Réponds en français, max 5 phrases.`},
+  politique:{label:"Droit politique",premium:true,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit politique et électoral** : élections, financement des partis, mandat électif, conflits d'intérêt, déontologie politique. Posez votre question.",
+    questions:["Comment contester les résultats d'une élection ?","Financement illégal d'un parti politique ?","Un élu peut-il cumuler plusieurs mandats ?","Conflit d'intérêt d'un maire, que faire ?","Droits d'un élu municipal en France ?","Comment créer un parti politique légalement ?"],
+    system:`Tu es Maître IA, expert en droit politique et électoral français (2026). Tu connais le Code électoral, le financement des partis, la déontologie des élus, le Conseil Constitutionnel. Réponds en français, clairement, max 5 phrases.`},
+  admin:{label:"Droit administratif",premium:true,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit administratif** : recours contre des décisions de l'administration, préfecture, mairie, droits des administrés. Posez votre question.",
+    questions:["Refus de titre de séjour par la préfecture, recours ?","Comment attaquer une décision de la mairie ?","L'administration ne répond pas, que faire ?","Recours gracieux vs recours contentieux ?","Erreur sur mon acte de naissance, comment corriger ?","Droit d'accès à un document administratif ?"],
+    system:`Tu es Maître IA, expert en droit administratif français (2026). Tu connais le tribunal administratif, le Conseil d'État, les recours gracieux et contentieux, le CADA. Réponds en français, max 5 phrases.`},
+  data:{label:"RGPD & Données",premium:true,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **RGPD et la protection des données** : surveillance numérique, droit à l'oubli, données personnelles, vidéosurveillance, deep fakes. Posez votre question.",
+    questions:["Mon employeur me surveille par caméra, légal ?","Comment exercer mon droit à l'oubli Google ?","Une entreprise a vendu mes données, recours ?","Vidéosurveillance dans un immeuble, règles ?","Mon image a été utilisée sans accord, que faire ?","Un deepfake de moi circule, recours légaux ?"],
+    system:`Tu es Maître IA, expert en RGPD et droit numérique français (2026). Tu connais le RGPD, la CNIL, le droit à l'oubli, la vidéosurveillance, le droit à l'image. Réponds en français, max 5 phrases.`},
+  etranger:{label:"Droit des étrangers",premium:true,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit des étrangers** : titre de séjour, naturalisation, demande d'asile, expulsion, regroupement familial. Posez votre question.",
+    questions:["Ma demande d'asile a été refusée, recours ?","Comment obtenir la nationalité française ?","Titre de séjour refusé, que faire ?","Regroupement familial, conditions requises ?","OQTF reçue, comment me défendre ?","Droits d'un sans-papiers en France ?"],
+    system:`Tu es Maître IA, expert en droit des étrangers et droit d'asile français (2026). Tu connais le CESEDA, l'OFPRA, le droit d'asile, les titres de séjour, l'OQTF. Réponds en français, max 5 phrases.`},
+  liberte:{label:"Libertés publiques",premium:true,
+    intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur les **libertés publiques** : liberté d'expression, droit de manifester, arrestation lors d'une manifestation, diffamation politique, censure. Posez votre question.",
+    questions:["Arrêté lors d'une manifestation, mes droits ?","Liberté d'expression sur les réseaux sociaux ?","Peut-on me licencier pour mes opinions politiques ?","Diffamation envers un élu, quelles sanctions ?","Droit de grève, jusqu'où peut-on aller ?","Un site internet a été censuré, recours ?"],
+    system:`Tu es Maître IA, expert en libertés publiques et droit constitutionnel français (2026). Tu connais la CEDH, la Déclaration des Droits de l'Homme, la liberté d'expression, le droit de manifester. Réponds en français, max 5 phrases.`},
+};
+
+// ─── UI HELPERS ─────────────────────────────────────────────────────────────
+function updateCreditsUI() {
+  if (isPremium) {
+    document.getElementById('credits-bar').style.display = 'none';
+    document.getElementById('credits-mini').innerHTML = `<svg width="11" height="11" style="color:var(--gold);"><use href="#i-star"/></svg><strong style="color:var(--gold);">Premium · Illimité</strong>`;
+    return;
+  }
+  document.getElementById('credits-num').textContent = credits;
+  document.getElementById('credits-mini-num').textContent = credits;
+  const pct = (credits / FREE_LIMIT) * 100;
+  const fill = document.getElementById('credits-fill');
+  fill.style.width = pct + '%';
+  fill.className = 'credits-fill' + (pct <= 33 ? ' low' : pct <= 66 ? ' warn' : '');
+  const inp = document.getElementById('chat-inp');
+  const btn = document.getElementById('chat-send-btn');
+  if (credits <= 0) {
+    inp.disabled = true;
+    inp.placeholder = 'Quota journalier atteint — Passez en Premium pour continuer';
+    btn.disabled = true;
+  } else {
+    inp.disabled = false;
+    inp.placeholder = 'Décrivez votre situation juridique...';
+    btn.disabled = false;
+  }
+}
+
+function setCat(cat) {
+  if (PREMIUM_CATS.includes(cat) && !isPremium) { openModal(); return; }
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById('cat-' + cat);
+  if (el) el.classList.add('active');
+  const data = CATS[cat];
+  document.getElementById('q-cat-label').textContent = data.label;
+  document.getElementById('chat-theme-badge').textContent = data.label;
+  renderQR(cat);
+  chatHistory = [];
+  document.getElementById('chat-msgs').innerHTML = '';
+  addMsg('ai', fmt(data.intro));
+}
+
+function renderQR(cat) {
+  document.getElementById('q-rapides').innerHTML = CATS[cat].questions
+    .map(q => `<button class="q-btn" onclick="setQ(this.textContent)">${q}</button>`).join('');
+}
+
+function setQ(q) {
+  const inp = document.getElementById('chat-inp');
+  if (inp.disabled) { openModal(); return; }
+  inp.value = q;
+  inp.focus();
+}
+
+function fmt(t) {
+  return t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+}
+
+function addMsg(role, content) {
+  const w = document.getElementById('chat-msgs');
+  const d = document.createElement('div');
+  d.className = 'msg ' + role;
+  const now = new Date().toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
+  d.innerHTML = content + `<span class="msg-time">${now}</span>`;
+  w.appendChild(d);
+  w.scrollTop = w.scrollHeight;
+  if (role === 'ai') lastAiMsg = content;
+}
+
+function addTyping() {
+  const w = document.getElementById('chat-msgs');
+  const d = document.createElement('div');
+  d.className = 'typing'; d.id = 'typing-ind';
+  d.innerHTML = '<span></span><span></span><span></span>';
+  w.appendChild(d); w.scrollTop = w.scrollHeight;
+}
+function removeTyping() { const t = document.getElementById('typing-ind'); if(t) t.remove(); }
+
+// ─── PAYWALL ────────────────────────────────────────────────────────────────
+function showPaywall() {
+  const w = document.getElementById('chat-msgs');
+  const d = document.createElement('div');
+  d.className = 'paywall-msg';
+  d.innerHTML = `
+    <h4>Quota journalier atteint</h4>
+    <p>Vous avez utilisé vos <strong>3 questions gratuites</strong> du jour. Passez en Premium pour des questions <strong>illimitées</strong>, tous les domaines politiques débloqués, et un résumé PDF de vos échanges.</p>
+    <button class="btn-unlock" onclick="openModal()">
+      <svg width="14" height="14"><use href="#i-star"/></svg>
+      Débloquer Premium — 4,99€/mois
+    </button>`;
+  w.appendChild(d);
+  w.scrollTop = w.scrollHeight;
+  updateCreditsUI();
+}
+
+// ─── SEND ───────────────────────────────────────────────────────────────────
+async function sendMsg() {
+  const inp = document.getElementById('chat-inp');
+  const txt = inp.value.trim();
+  if (!txt) return;
+  if (!isPremium && credits <= 0) { openModal(); return; }
+
+  inp.value = '';
+  addMsg('user', txt);
+  chatHistory.push({ role: 'user', content: txt });
+  addTyping();
+
+  if (!isPremium) {
+    credits--;
+    localStorage.setItem('av_credits', credits);
+    updateCreditsUI();
+  }
+
+  const cat = CATS[currentCat];
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: cat.system,
+        messages: chatHistory,
+      })
+    });
+    const json = await res.json();
+    const reply = json.content?.[0]?.text || 'Désolé, une erreur est survenue.';
+    chatHistory.push({ role: 'assistant', content: reply });
+    removeTyping();
+    addMsg('ai', fmt(reply));
+    if (!isPremium && credits <= 0) setTimeout(showPaywall, 800);
+  } catch (e) {
+    removeTyping();
+    addMsg('ai', 'Erreur de connexion. Vérifiez votre connexion et réessayez.');
+  }
+}
+
+function clearChat() {
+  chatHistory = [];
+  document.getElementById('chat-msgs').innerHTML = '';
+  addMsg('ai', fmt(CATS[currentCat].intro));
+}
+
+function copyLast() {
+  if (!lastAiMsg) return;
+  const text = lastAiMsg.replace(/<[^>]*>/g, '');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelectorAll('.act-btn')[1];
+    const orig = btn.innerHTML;
+    btn.innerHTML = `<svg width="10" height="10" style="color:var(--green);"><use href="#i-check"/></svg>Copié !`;
+    btn.style.color = 'var(--green)';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.color = ''; }, 2000);
+  });
+}
+
+// ─── MODAL ──────────────────────────────────────────────────────────────────
+function openModal() {
+  document.getElementById('modal-bg').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modal-bg').classList.remove('open');
+}
+function selectPlan(plan) {
+  selectedPlan = plan;
+  document.getElementById('plan-mensuel').classList.toggle('selected', plan === 'mensuel');
+  document.getElementById('plan-annuel').classList.toggle('selected', plan === 'annuel');
+  document.getElementById('btn-pay-label').textContent =
+    plan === 'mensuel' ? "S'abonner à 4,99€/mois" : "S'abonner à 2,99€/mois (annuel)";
+}
+function handlePay() {
+  const link = selectedPlan === 'mensuel' ? STRIPE_LINK_MENSUEL : STRIPE_LINK_ANNUEL;
+  if (link.includes('REMPLACE')) {
+    alert('⚠️ Configurez vos liens Stripe dans le code (variables STRIPE_LINK_MENSUEL et STRIPE_LINK_ANNUEL)');
+    return;
+  }
+  window.open(link, '_blank');
+}
+function activateCode() {
+  const code = document.getElementById('code-inp').value.trim().toUpperCase();
+  const msg = document.getElementById('code-msg');
+  // Codes de démonstration — remplacez par votre système réel
+  const validCodes = ['PREMIUM2026', 'DROITSNET', 'AVOCAT499'];
+  if (validCodes.includes(code)) {
+    isPremium = true;
+    localStorage.setItem('av_premium', 'true');
+    closeModal();
+    updateCreditsUI();
+    addMsg('ai', '<strong>Premium activé !</strong> Vous avez maintenant accès illimité à tous les domaines juridiques et politiques. Posez autant de questions que vous souhaitez.');
+  } else {
+    msg.textContent = 'Code invalide. Vérifiez votre code ou abonnez-vous.';
+    msg.style.display = 'block';
+  }
+}
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+selectPlan('mensuel');
+setCat('permis');
+updateCreditsUI();
+</script>
+</body>
+</html>
