@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -255,6 +254,13 @@ footer{background:var(--navy);padding:22px 18px;}
 .footer-link{color:rgba(255,255,255,.4);font-size:11px;font-weight:600;}
 details summary{cursor:pointer;color:var(--muted);font-size:12px;font-weight:700;padding:8px 0;list-style:none;display:flex;align-items:center;gap:5px;}
 details summary::-webkit-details-marker{display:none;}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden;cursor:pointer;}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;font-weight:700;font-size:14px;color:var(--navy);line-height:1.4;}
+.faq-arrow{font-size:20px;font-weight:400;color:var(--rf-blue);flex-shrink:0;transition:transform .2s;}
+.faq-item.open .faq-arrow{transform:rotate(45deg);}
+.faq-a{display:none;padding:0 18px 16px;font-size:13px;color:var(--slate);line-height:1.75;border-top:1px solid var(--border);}
+.faq-item.open .faq-a{display:block;}
+.faq-a strong{color:var(--navy);}
 @media(max-width:500px){
   .aide-2col,.av-plan-grid{grid-template-columns:1fr;}
   .res-banner{gap:12px;}.res-total-n{font-size:36px;}
@@ -413,6 +419,123 @@ details summary::-webkit-details-marker{display:none;}
   <div class="cta-dark">
     <div style="flex:1;min-width:170px;"><h3>Créer un business avec DroisNet</h3><p>Guide complet : mise en ligne, revenus, plan 90 jours, aspects légaux.</p></div>
     <button class="btn-gold" onclick="gp('business')"><svg width="14" height="14"><use href="#i-rocket"/></svg>Voir le guide</button>
+  </div>
+
+  <!-- FAQ SEO -->
+  <div style="margin-top:48px;">
+    <h2 style="font-size:22px;color:var(--navy);margin-bottom:6px;text-align:center;">Questions fréquentes sur les droits sociaux</h2>
+    <p style="color:var(--muted);font-size:13px;text-align:center;margin-bottom:24px;">Tout ce que vous devez savoir sur les aides sociales en France 2026</p>
+
+    <div id="faq-list">
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Qui a droit au RSA en 2026 et quel est le montant ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Le RSA (Revenu de Solidarité Active) est ouvert à toute personne de plus de 25 ans résidant en France avec des ressources insuffisantes. En 2026, le montant est de <strong>635€/mois pour une personne seule</strong>, 952€ pour un couple, et 1 143€ pour un couple avec un enfant. Pour y avoir droit, il faut être inscrit à France Travail et effectuer des démarches d'insertion professionnelle. La demande se fait directement sur CAF.fr ou à la mairie. Le RSA est cumulable avec les revenus d'activité sous certaines conditions.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Comment calculer et simuler mon APL en 2026 ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">L'APL (Aide Personnalisée au Logement) dépend de vos revenus, de votre loyer et de la composition de votre foyer. Pour la calculer, vous devez être locataire d'un logement conventionné en résidence principale. En 2026, le montant maximum est d'environ <strong>295€/mois pour une personne seule</strong> et jusqu'à 440€ pour une famille. La simulation se fait gratuitement sur DroisNet ou sur CAF.fr. Pour faire votre demande, il faut fournir votre bail de location, vos justificatifs de revenus et un RIB. Le délai de traitement est d'environ 1 à 2 mois.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Qu'est-ce que la Prime d'Activité et comment en bénéficier ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">La Prime d'Activité est une aide mensuelle versée par la CAF aux travailleurs dont les revenus sont modestes. Elle concerne les salariés, les indépendants et les auto-entrepreneurs. En 2026, elle peut atteindre <strong>622€/mois selon votre situation</strong>. Pour en bénéficier, vous devez avoir plus de 18 ans et percevoir un revenu d'activité. La demande se fait sur CAF.fr ou MSA. La prime est recalculée tous les 3 mois. Environ 27% des personnes éligibles ne font pas leur demande, c'est pourquoi nous vous recommandons de simuler vos droits dès maintenant.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Comment obtenir l'AAH (Allocation Adulte Handicapé) ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">L'AAH est une aide financière destinée aux personnes en situation de handicap. En 2026, son montant maximum est de <strong>1 016€ par mois</strong>. Pour y avoir droit, votre taux d'incapacité doit être reconnu à 80% ou plus par la MDPH (ou entre 50% et 79% avec une restriction substantielle d'accès à l'emploi). La demande se fait auprès de la MDPH de votre département. Les délais de traitement sont de 4 à 6 mois. L'AAH est cumulable avec d'autres aides comme la C2S (mutuelle gratuite). Le dossier nécessite un certificat médical et une attestation de situation professionnelle.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Comment toucher 100% de son salaire en arrêt maladie ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Pour percevoir 100% de son salaire en arrêt maladie, plusieurs conditions doivent être réunies. La Sécurité sociale verse des indemnités journalières représentant <strong>environ 50% du salaire journalier de base</strong>. Pour atteindre 100%, votre employeur doit compléter via le maintien de salaire conventionnel (prévu par votre convention collective). Certains fonctionnaires bénéficient d'un maintien intégral. Après 90 jours d'arrêt, des compléments peuvent être accordés. La demande d'indemnités journalières se fait automatiquement via votre médecin qui envoie votre arrêt à l'Assurance Maladie.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Quels sont mes droits au chômage en 2026 (ARE) ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">L'Allocation de Retour à l'Emploi (ARE) est versée par France Travail après une perte involontaire d'emploi. Pour en bénéficier, vous devez avoir travaillé <strong>au moins 6 mois sur les 24 derniers mois</strong>. Le montant correspond à environ 57% de votre ancien salaire brut, avec un minimum de 31,59€/jour. La durée d'indemnisation va de 6 mois à 24 mois selon votre ancienneté. L'inscription à France Travail doit se faire dans les 12 mois suivant la fin du contrat. En cas de fin de droits, l'ASS (Allocation de Solidarité Spécifique) peut prendre le relais à 545€/mois.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Comment bénéficier du chèque énergie et quel est son montant ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Le chèque énergie est une aide annuelle automatique pour payer vos factures d'électricité, gaz ou fioul. <strong>Aucune démarche n'est nécessaire</strong> — il est envoyé automatiquement par courrier en avril si vous êtes éligible. En 2026, le montant varie entre 143€ et 277€ selon vos revenus et la composition de votre foyer. Pour être éligible, votre revenu fiscal de référence doit être inférieur à 11 399€ par an pour une personne seule. Si vous ne l'avez pas reçu, contactez le 0805 204 805 (numéro gratuit) ou connectez-vous sur chequeenergie.gouv.fr.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Comment obtenir une mutuelle gratuite avec la C2S ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">La Complémentaire Santé Solidaire (C2S) remplace l'ancienne CMU-C. Elle offre une <strong>mutuelle entièrement gratuite</strong> pour les personnes dont les revenus sont inférieurs à 9 261€/an (personne seule) ou à 1€/mois si vos revenus sont légèrement supérieurs. La demande se fait sur ameli.fr, à la CPAM ou auprès d'une assistante sociale. Les documents nécessaires sont votre avis d'imposition et vos justificatifs de revenus des 3 derniers mois. Le délai de traitement est de 2 à 4 semaines. La C2S couvre les consultations, médicaments, hospitalisations et soins dentaires et optiques.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Peut-on cumuler RSA et travail en même temps ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Oui, il est tout à fait possible de <strong>cumuler le RSA avec une activité professionnelle</strong>. En reprenant un travail, votre RSA ne s'arrête pas immédiatement — il est réduit progressivement selon une formule de calcul. Pendant les 3 premiers mois, vous conservez 100% du RSA si vous repreniez un emploi. Ensuite, 62% de vos revenus d'activité sont déduits du RSA. Si vos revenus dépassent le plafond, le RSA cesse automatiquement. En travaillant, vous pouvez également avoir droit à la Prime d'Activité en complément. Déclarez toujours vos revenus à la CAF tous les 3 mois.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Quelles aides existent pour les parents isolés (parent seul) ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Les parents isolés bénéficient de nombreuses aides spécifiques en France. L'<strong>ASF (Allocation de Soutien Familial)</strong> est versée à 123€/mois par enfant en l'absence de pension alimentaire. Le RSA est majoré pour les parents isolés dès 18 ans (au lieu de 25 ans). La PAJE inclut des aides pour la garde d'enfants. Les allocations familiales sont versées dès le 2ème enfant. En plus, la CAF peut accorder des aides au logement (APL/ALF), des aides à la rentrée scolaire (ARS) et un accompagnement personnalisé. Simulez vos droits sur DroisNet pour connaître exactement ce à quoi vous avez droit.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Comment perdre des points sur son permis et comment les récupérer ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Le permis de conduire français comporte <strong>12 points</strong> (6 en période probatoire). Chaque infraction entraîne un retrait de points : excès de vitesse léger = 1 point, téléphone au volant = 3 points, conduite en état d'ivresse = 6 points. Pour récupérer des points, vous pouvez suivre un <strong>stage de sensibilisation</strong> volontaire (4 points récupérés, tous les 2 ans maximum, coût 200-300€) ou attendre le délai automatique (1 à 3 ans selon l'infraction sans nouvelle infraction). Si vous perdez tous vos points, votre permis est invalidé et vous devrez repasser les examens. Notre Avocat IA peut vous conseiller sur les recours possibles.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Qu'est-ce que le tapage nocturne et quelles sont les sanctions ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Le tapage nocturne est interdit en France <strong>de 22h à 7h du matin</strong>. Il s'agit de tout bruit troublant la tranquillité des voisins : musique forte, travaux, fêtes bruyantes, aboiements de chien. Les sanctions peuvent aller de <strong>68€ à 1 500€ d'amende</strong> selon la gravité. En cas de tapage, vous pouvez appeler le 17 (police) ou contacter la mairie. Il est conseillé de d'abord discuter avec le voisin, puis d'envoyer un courrier recommandé avant de porter plainte. Notre Avocat IA vous guide sur les démarches à suivre en cas de conflit de voisinage persistant.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Comment se faire indemniser après un accident de la route ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Après un accident de la route, vous devez d'abord remplir un <strong>constat amiable</strong> avec l'autre conducteur. Si vous êtes victime sans responsabilité, l'assurance du responsable doit vous indemniser intégralement. Pour les préjudices corporels, vous pouvez faire appel à un <strong>médecin expert</strong> et à un avocat spécialisé. Le Fonds de Garantie des Assurances (FGAO) intervient si le responsable n'est pas assuré. Les délais d'indemnisation varient de 3 mois à plusieurs années selon la complexité. Consultez notre Avocat IA pour connaître vos droits précis selon votre situation.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Quelles aides pour financer une formation professionnelle en 2026 ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Plusieurs dispositifs permettent de financer une formation professionnelle. Le <strong>CPF (Compte Personnel de Formation)</strong> cumule jusqu'à 5 000€ de crédit accessible sur moncompteformation.gouv.fr. Pour les demandeurs d'emploi, France Travail finance des formations via l'AIF (Aide Individuelle à la Formation). Le Pro-A permet aux salariés de se reconvertir tout en travaillant. Le bilan de compétences est financé à 100% par le CPF. L'OPCO de votre branche professionnelle peut compléter le financement. Pour les indépendants, le FIF-PL ou le FAF-PM interviennent selon votre activité.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Comment contester une décision de la CAF ou de France Travail ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Si vous n'êtes pas d'accord avec une décision de la CAF, vous pouvez d'abord faire un <strong>recours amiable</strong> (courrier recommandé dans les 2 mois). En cas d'échec, saisissez la Commission de Recours Amiable (CRA) de la CAF. Si la CRA confirme la décision, vous pouvez saisir le Tribunal Judiciaire dans un délai de 2 mois. Pour France Travail, la procédure est similaire avec une saisie du Tribunal Administratif. Conservez toujours <strong>tous vos documents et courriers</strong>. Notre Avocat IA peut vous aider à rédiger votre recours et vous expliquer les démarches à suivre.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Quelles aides pour les seniors et personnes âgées en perte d'autonomie ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">Les personnes âgées en perte d'autonomie peuvent bénéficier de plusieurs aides. L'<strong>APA (Allocation Personnalisée d'Autonomie)</strong> est versée dès 60 ans et peut atteindre 1 800€/mois pour les GIR 1-2. L'ASPA (minimum vieillesse) garantit un revenu minimum de 1 012€/mois pour les personnes seules de 65 ans et plus. Des aides ménagères financées par le Conseil Départemental permettent d'obtenir jusqu'à 30h de ménage par mois. Le chèque énergie est automatiquement attribué. Des réductions fiscales s'appliquent pour l'emploi d'une aide à domicile (50% de crédit d'impôt). Simulez vos droits sur DroisNet pour connaître toutes vos aides.</div>
+      </div>
+
+      <div class="faq-item" onclick="togFaq(this)">
+        <div class="faq-q"><span>Comment bénéficier de l'aide juridictionnelle (avocat gratuit) ?</span><span class="faq-arrow">+</span></div>
+        <div class="faq-a">L'aide juridictionnelle permet d'avoir un avocat <strong>entièrement gratuit</strong> si vos revenus sont inférieurs à certains plafonds. En 2026, le plafond est d'environ 1 000€/mois de revenus mensuels nets pour une aide totale. La demande se fait au Bureau d'Aide Juridictionnelle (BAJ) du Tribunal de votre domicile. Il faut fournir votre avis d'imposition, une pièce d'identité et les documents relatifs à votre affaire. Le délai de traitement est de 1 à 2 mois. Pour les litiges avec votre assurance, vérifiez d'abord si vous avez une <strong>protection juridique</strong> incluse dans votre contrat habitation ou auto.</div>
+      </div>
+
+    </div>
+
+    <!-- SCHEMA.ORG FAQ pour Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Qui a droit au RSA en 2026 et quel est le montant ?","acceptedAnswer":{"@type":"Answer","text":"Le RSA est ouvert aux personnes de plus de 25 ans avec des ressources insuffisantes. En 2026, le montant est de 635€/mois pour une personne seule, 952€ pour un couple."}},
+        {"@type":"Question","name":"Comment calculer mon APL en 2026 ?","acceptedAnswer":{"@type":"Answer","text":"L'APL dépend de vos revenus, de votre loyer et de la composition de votre foyer. Le montant maximum est d'environ 295€/mois pour une personne seule."}},
+        {"@type":"Question","name":"Qu'est-ce que la Prime d'Activité ?","acceptedAnswer":{"@type":"Answer","text":"La Prime d'Activité est une aide mensuelle versée par la CAF aux travailleurs dont les revenus sont modestes. Elle peut atteindre 622€/mois."}},
+        {"@type":"Question","name":"Comment obtenir l'AAH ?","acceptedAnswer":{"@type":"Answer","text":"L'AAH est destinée aux personnes en situation de handicap avec un taux d'incapacité reconnu à 80% ou plus. Son montant maximum est de 1 016€/mois."}},
+        {"@type":"Question","name":"Comment toucher 100% de son salaire en arrêt maladie ?","acceptedAnswer":{"@type":"Answer","text":"La Sécurité sociale verse 50% du salaire. Pour atteindre 100%, votre convention collective doit prévoir un maintien de salaire par l'employeur."}},
+        {"@type":"Question","name":"Peut-on cumuler RSA et travail ?","acceptedAnswer":{"@type":"Answer","text":"Oui, le RSA est cumulable avec une activité professionnelle. Pendant les 3 premiers mois de reprise d'emploi, vous conservez 100% du RSA."}},
+        {"@type":"Question","name":"Quelles aides pour les parents isolés ?","acceptedAnswer":{"@type":"Answer","text":"Les parents isolés bénéficient de l'ASF (123€/mois par enfant), du RSA dès 18 ans, de la PAJE et des allocations familiales."}},
+        {"@type":"Question","name":"Comment bénéficier du chèque énergie ?","acceptedAnswer":{"@type":"Answer","text":"Le chèque énergie est envoyé automatiquement en avril. Le montant varie entre 143€ et 277€ selon les revenus. Aucune démarche n'est nécessaire."}},
+        {"@type":"Question","name":"Comment obtenir une mutuelle gratuite avec la C2S ?","acceptedAnswer":{"@type":"Answer","text":"La C2S offre une mutuelle gratuite pour les revenus inférieurs à 9 261€/an. La demande se fait sur ameli.fr ou à la CPAM."}},
+        {"@type":"Question","name":"Qu'est-ce que le tapage nocturne ?","acceptedAnswer":{"@type":"Answer","text":"Le tapage nocturne est interdit de 22h à 7h. Les sanctions vont de 68€ à 1 500€ d'amende selon la gravité."}},
+        {"@type":"Question","name":"Quelles aides pour financer une formation professionnelle ?","acceptedAnswer":{"@type":"Answer","text":"Le CPF cumule jusqu'à 5 000€ de crédit formation. France Travail finance des formations pour les demandeurs d'emploi."}},
+        {"@type":"Question","name":"Quelles aides pour les seniors en perte d'autonomie ?","acceptedAnswer":{"@type":"Answer","text":"L'APA peut atteindre 1 800€/mois. L'ASPA garantit 1 012€/mois pour les plus de 65 ans aux faibles revenus."}}
+      ]
+    }
+    </script>
   </div>
 </div>
 </div>
@@ -861,6 +984,7 @@ function sm(i){
   document.getElementById('mc').innerHTML=`<div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">${ic(m.si,26,m.c)}<div><div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:3px;"><h3 style="font-size:17px;color:var(--navy);">${m.t}</h3><span class="pill" style="background:${m.bg};color:${m.c};">${m.badge}</span></div><p style="color:var(--muted);font-size:12px;">${m.desc}</p></div></div>${m.html}`;
 }
 sm(0);renderSim();
+function togFaq(el){el.classList.toggle('open');}
 </script>
 </body>
 </html>
