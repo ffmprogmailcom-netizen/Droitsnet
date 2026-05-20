@@ -3,41 +3,6 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<!-- SEO TITRE & DESCRIPTION -->
-<title>DroisNet — Simulateur de droits sociaux gratuit 2026 | RSA, APL, AAH</title>
-<meta name="description" content="Simulez vos droits sociaux en 3 minutes. RSA, APL, prime d'activité, AAH, chèque énergie, allocations familiales... Gratuit, anonyme, sans inscription."/>
-<meta name="keywords" content="simulateur droits sociaux, RSA, APL, AAH, prime activité, chèque énergie, aide logement, droits sociaux 2026, simulation CAF"/>
-<meta name="author" content="DroisNet"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://droitsnet.fr"/>
-
-<!-- OPEN GRAPH (partage réseaux sociaux) -->
-<meta property="og:title" content="DroisNet — Simulateur de droits sociaux 2026"/>
-<meta property="og:description" content="Découvrez toutes les aides auxquelles vous avez droit en 3 minutes. Gratuit et anonyme."/>
-<meta property="og:url" content="https://droitsnet.fr"/>
-<meta property="og:type" content="website"/>
-<meta property="og:locale" content="fr_FR"/>
-
-<!-- DONNÉES STRUCTURÉES (Rich Results Google) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "DroisNet",
-  "description": "Simulateur gratuit de droits sociaux français — RSA, APL, AAH, prime d'activité, chèque énergie, allocations familiales",
-  "url": "https://droitsnet.fr",
-  "applicationCategory": "GovernmentApplication",
-  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
-  "inLanguage": "fr-FR",
-  "keywords": "droits sociaux, RSA, APL, AAH, simulateur, CAF, France"
-}
-</script>
-
-<link href="https://fonts.googleapis.com/css2?family=Marianne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>DroisNet — Simulateur de droits sociaux 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Marianne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
@@ -336,6 +301,7 @@ footer{background:var(--navy);padding:28px 20px;}
       <button class="nav-btn" id="nav-simulateur" onclick="gp('simulateur')"><svg width="14" height="14"><use href="#i-search"/></svg>Simulateur</button>
       <button class="nav-btn" id="nav-resultats" onclick="gp('resultats')"><svg width="14" height="14"><use href="#i-bar"/></svg>Mes droits<span class="nav-badge" id="eb" style="display:none">0</span></button>
       <button class="nav-btn" id="nav-assistant" onclick="gp('assistant')"><svg width="14" height="14"><use href="#i-bot"/></svg>Conseiller IA</button>
+      <button class="nav-btn" id="nav-avocat" onclick="gp('avocat')" style="position:relative;"><svg width="14" height="14" style="color:#b5860d;"><use href="#i-balance"/></svg>Avocat IA<span style="position:absolute;top:3px;right:3px;width:6px;height:6px;border-radius:50%;background:#e1000f;"></span></button>
       <button class="nav-btn" id="nav-business" onclick="gp('business')"><svg width="14" height="14"><use href="#i-rocket"/></svg>Lancer l'app</button>
     </div>
     <button class="nav-cta" onclick="startSim()"><svg width="14" height="14"><use href="#i-search"/></svg>Simuler mes droits</button>
@@ -352,7 +318,9 @@ footer{background:var(--navy);padding:28px 20px;}
       <p class="hero-sub">Découvrez toutes les aides auxquelles vous êtes éligible — RSA, APL, AAH, allocations familiales, chèque énergie et bien plus encore. Gratuit, anonyme, sans inscription.</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="startSim()">Commencer la simulation<svg width="16" height="16"><use href="#i-right"/></svg></button>
+        <button class="btn-outline" onclick="gp('avocat')" style="border-color:#b5860d;color:#b5860d;">Avocat IA <svg width="16" height="16" style="color:#b5860d;"><use href="#i-balance"/></svg></button>
         <button class="btn-outline" onclick="gp('business')">Créer son business<svg width="16" height="16"><use href="#i-rocket"/></svg></button>
+        
       </div>
     </div>
     <!-- VECTOR ILLUSTRATION -->
@@ -486,6 +454,50 @@ footer{background:var(--navy);padding:28px 20px;}
     </div>
   </div>
 </div>
+</div>
+
+<!-- ══ AVOCAT IA ══ -->
+<div id="page-avocat" class="page">
+<div class="container">
+  <div class="section-head"><h2><svg width="22" height="22" style="color:#b5860d;"><use href="#i-balance"/></svg>Avocat IA — Conseil juridique</h2><p>Posez vos questions juridiques en langage simple. 3 questions gratuites par jour — illimité avec Premium.</p></div>
+  <div style="background:#fff3e0;border-left:4px solid #e65100;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:20px;display:flex;gap:10px;align-items:flex-start;"><svg width="17" height="17" style="color:#e65100;flex-shrink:0;margin-top:1px;"><use href="#i-warn"/></svg><p style="font-size:12px;color:#8b4500;line-height:1.65;"><strong>Information juridique uniquement.</strong> Ne remplace pas un avocat qualifié. Urgence : <strong>15 · 17 · 18 · 3114</strong></p></div>
+  <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;"><div><div style="font-size:28px;font-weight:800;color:var(--navy);line-height:1;" id="av-credits-num">3</div><div style="font-size:12px;color:var(--muted);">questions restantes aujourd'hui</div></div><div style="flex:1;min-width:120px;"><div style="height:6px;background:var(--border);border-radius:99px;overflow:hidden;margin-top:6px;"><div id="av-credits-bar" style="height:100%;width:100%;border-radius:99px;background:linear-gradient(90deg,#00704a,#34d399);transition:width .4s;"></div></div></div><button onclick="document.getElementById('av-modal').style.display='flex'" style="padding:8px 14px;border-radius:6px;border:none;background:linear-gradient(135deg,#b5860d,#d4a017);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:Marianne,Arial,sans-serif;display:flex;align-items:center;gap:5px;"><svg width="12" height="12"><use href="#i-star"/></svg>Illimité 4,99€/mois</button></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;margin-bottom:20px;" id="av-cats"></div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;" id="av-qr"></div>
+  <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(27,42,74,.07);">
+    <div style="background:linear-gradient(135deg,var(--navy),#243b6e);padding:14px 18px;display:flex;align-items:center;gap:12px;">
+      <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" style="color:rgba(255,255,255,.9);"><use href="#i-balance"/></svg></div>
+      <div><div style="color:#fff;font-weight:800;font-size:14px;">Maître IA · DroisNet</div><div style="color:#86efac;font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#86efac;display:inline-block;"></span>En ligne · Expert droit français</div></div>
+      <div id="av-theme-badge" style="background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-left:auto;">Permis de conduire</div>
+    </div>
+    <div id="av-msgs" style="height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--white);"></div>
+    <div style="background:var(--white);border-top:1px solid var(--border);padding:12px 16px;">
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <textarea id="av-inp" placeholder="Décrivez votre situation juridique..." rows="2" style="flex:1;padding:10px 13px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;color:var(--navy);outline:none;background:var(--bg);resize:none;font-family:Marianne,Arial,sans-serif;" onkeydown="if(event.key==='Enter'<!-- ══ BUSINESS ══ --><!-- ══ BUSINESS ══ -->!event.shiftKey){event.preventDefault();avSend();}"></textarea>
+        <button onclick="avSend()" id="av-send-btn" style="padding:10px 18px;border-radius:8px;border:none;background:var(--rf-blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;gap:5px;font-family:Marianne,Arial,sans-serif;align-self:flex-end;"><svg width="13" height="13"><use href="#i-send"/></svg>Envoyer</button>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+        <button onclick="avClear()" style="background:var(--blue-light);border:none;border-radius:4px;padding:4px 10px;font-size:11px;color:var(--blue);font-weight:700;cursor:pointer;font-family:Marianne,Arial,sans-serif;display:flex;align-items:center;gap:4px;"><svg width="10" height="10"><use href="#i-refresh"/></svg>Nouvelle conv.</button>
+        <span id="av-credits-mini" style="margin-left:auto;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px;"><svg width="11" height="11" style="color:#b5860d;"><use href="#i-star"/></svg><strong id="av-credits-mini-n">3</strong> question(s) restante(s)</span>
+      </div>
+    </div>
+  </div>
+  <div id="av-paywall" style="display:none;background:linear-gradient(135deg,#fdf5e0,#fef9ee);border:1.5px solid #e6c97a;border-radius:10px;padding:18px 20px;margin-top:16px;text-align:center;"><h4 style="font-size:15px;color:#8b4f00;margin-bottom:6px;">Quota journalier atteint</h4><p style="font-size:12px;color:#8b6000;margin-bottom:14px;line-height:1.6;">Vous avez utilisé vos <strong>3 questions gratuites</strong> du jour. Passez en Premium pour des questions <strong>illimitées</strong> et tous les domaines politiques débloqués.</p><button onclick="document.getElementById('av-modal').style.display='flex'" style="display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;border:none;background:linear-gradient(135deg,#b5860d,#d4a017);color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:Marianne,Arial,sans-serif;"><svg width="14" height="14"><use href="#i-star"/></svg>Débloquer Premium — 4,99€/mois</button></div>
+</div>
+</div>
+
+<!-- MODAL PREMIUM AVOCAT -->
+<div id="av-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:999;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:#fff;border-radius:18px;padding:28px;max-width:420px;width:100%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.25);">
+    <button onclick="document.getElementById('av-modal').style.display='none'" style="position:absolute;top:12px;right:12px;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;font-size:16px;color:var(--muted);">×</button>
+    <div style="text-align:center;margin-bottom:16px;"><div style="width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#b5860d,#d4a017);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><svg width="24" height="24" style="color:#fff;"><use href="#i-star"/></svg></div><h2 style="font-size:20px;color:var(--navy);margin-bottom:6px;">Passez au Premium</h2><p style="font-size:13px;color:var(--muted);line-height:1.6;">Questions illimitées + domaines politiques débloqués + support prioritaire.</p></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+      <div style="border:2px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;" onclick="avSelectPlan('mensuel')" id="av-plan-m"><div style="font-weight:800;font-size:14px;color:var(--navy);margin-bottom:4px;">Mensuel</div><div style="font-size:20px;font-weight:800;color:var(--rf-blue);margin-bottom:8px;">4,99€<span style="font-size:12px;color:var(--muted);">/mois</span></div><div style="font-size:11px;color:var(--muted);">Résiliation à tout moment</div></div>
+      <div style="border:2px solid #b5860d;border-radius:10px;padding:14px;background:var(--gold-light);cursor:pointer;" onclick="avSelectPlan('annuel')" id="av-plan-a"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;"><span style="font-weight:800;font-size:14px;color:var(--navy);">Annuel</span><span style="background:#b5860d;color:#fff;font-size:10px;padding:1px 6px;border-radius:20px;font-weight:800;">-40%</span></div><div style="font-size:20px;font-weight:800;color:#b5860d;margin-bottom:2px;">2,99€<span style="font-size:12px;color:var(--muted);">/mois</span></div><div style="font-size:10px;color:var(--muted);">soit 35,88€/an</div></div>
+    </div>
+    <button id="av-pay-btn" onclick="avPay()" style="width:100%;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,#b5860d,#d4a017);color:#fff;font-size:14px;font-weight:800;cursor:pointer;font-family:Marianne,Arial,sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;"><svg width="14" height="14"><use href="#i-star"/></svg><span id="av-pay-label">S'abonner à 4,99€/mois</span></button>
+    <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:4px;"><svg width="11" height="11" style="color:var(--green);"><use href="#i-lock"/></svg>Paiement sécurisé Stripe · Résiliation à tout moment</p>
+  </div>
 </div>
 
 <!-- ══ BUSINESS ══ -->
@@ -737,3 +749,85 @@ sm(0);renderSim();
 </script>
 </body>
 </html>
+<script>
+// ─── AVOCAT IA ────────────────────────────────────────────────────────────────
+const AV_FREE=3,AV_SM="https://buy.stripe.com/MENSUEL",AV_SA="https://buy.stripe.com/ANNUEL";
+let avCr=parseInt(localStorage.getItem("av_cr")||AV_FREE),avRs=localStorage.getItem("av_rs")||"",avPm=localStorage.getItem("av_pm")==="true",avCat="permis",avH=[],avLast="",avPl="mensuel";
+const avToday=new Date().toDateString();
+if(avRs!==avToday&&!avPm){avCr=AV_FREE;localStorage.setItem("av_cr",avCr);localStorage.setItem("av_rs",avToday);}
+const AVC={
+  permis:{l:"Permis",full:"Permis de conduire",p:false,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **permis de conduire** : points, retrait, alcool, recours.",q:["Perdu tous mes points ?","Permis suspendu ?","Contrôle alcool positif ?","Récupérer des points ?","Excès de vitesse ?","Conduire pendant suspension ?"],sys:"Tu es Maître IA, expert droit routier français 2026. Réponds clairement en français, max 5 phrases."},
+  voisinage:{l:"Voisinage",full:"Voisinage & Bruit",p:false,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **voisinage** : tapage nocturne, nuisances, conflits.",q:["Bruit la nuit ?","Amende tapage nocturne ?","Porter plainte nuisances ?","Voisin empiète terrain ?","Arbre dangereux voisin ?","Règles barbecue ?"],sys:"Tu es Maître IA, expert droit voisinage 2026. Réponds en français, max 5 phrases."},
+  travail:{l:"Travail",full:"Droit du travail",p:false,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **travail** : licenciement, harcèlement, rupture.",q:["Licencié sans raison ?","Heures sup non payées ?","Harcèlement moral ?","Rupture conventionnelle ?","Licencié en arrêt maladie ?","Droit au télétravail ?"],sys:"Tu es Maître IA, expert droit travail 2026. Réponds en français, max 5 phrases."},
+  famille:{l:"Famille",full:"Famille & Divorce",p:false,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur la **famille** : divorce, garde, pension alimentaire.",q:["Divorcer à l'amiable ?","Pension non payée ?","Obtenir la garde ?","Garde alternée ?","Conjoint part avec enfants ?","Contester testament ?"],sys:"Tu es Maître IA, expert droit famille 2026. Réponds en français, max 5 phrases."},
+  logement:{l:"Logement",full:"Logement & Bail",p:false,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **logement** : expulsion, caution, bail.",q:["Caution non rendue ?","Avis d'expulsion ?","Propriétaire entre sans prévenir ?","Logement insalubre ?","Réparations refusées ?","Résilier bail avant fin ?"],sys:"Tu es Maître IA, expert droit logement 2026. Réponds en français, max 5 phrases."},
+  penal:{l:"Pénal",full:"Droit pénal",p:false,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit pénal** : infractions, garde à vue, droits.",q:["Convocation commissariat ?","Droits garde à vue ?","Refuser parler police ?","Amende forfaitaire recours ?","Contravention vs délit ?","Effacer casier ?"],sys:"Tu es Maître IA, expert droit pénal 2026. Réponds en français, max 5 phrases."},
+  immo:{l:"Immobilier",full:"Immobilier",p:false,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur l'**immobilier** : vice caché, copropriété, construction.",q:["Vice caché maison ?","Constructeur ne livre pas ?","Charges copropriété abusives ?","Rétractation compromis ?","Servitude imposée ?","Droit préemption mairie ?"],sys:"Tu es Maître IA, expert droit immobilier 2026. Réponds en français, max 5 phrases."},
+  conso:{l:"Consommation",full:"Consommation",p:false,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur la **consommation** : arnaques, remboursements, garanties.",q:["Arnaqué sur internet ?","Remboursement refusé ?","Garantie légale ?","Commande non reçue ?","Démarchage téléphonique ?","Prélèvement non autorisé ?"],sys:"Tu es Maître IA, expert droit consommation 2026. Réponds en français, max 5 phrases."},
+  politique:{l:"Politique",full:"Droit politique",p:true,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit politique** : élections, partis, mandats.",q:["Contester résultats élection ?","Financement illégal parti ?","Cumul de mandats ?","Conflit intérêt d'un élu ?","Droits d'un élu municipal ?","Créer un parti politique ?"],sys:"Tu es Maître IA, expert droit politique français 2026. Réponds en français, max 5 phrases."},
+  admin:{l:"Administratif",full:"Droit administratif",p:true,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit administratif** : recours, préfecture, mairie.",q:["Refus titre séjour ?","Attaquer décision mairie ?","Administration ne répond pas ?","Recours gracieux ?","Erreur acte naissance ?","Accès document admin ?"],sys:"Tu es Maître IA, expert droit administratif 2026. Réponds en français, max 5 phrases."},
+  data:{l:"RGPD",full:"RGPD & Données",p:true,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **RGPD** : données, surveillance, droit à l'oubli.",q:["Employeur me surveille ?","Droit à l'oubli Google ?","Données vendues recours ?","Vidéosurveillance immeuble ?","Image utilisée sans accord ?","Deepfake me concernant ?"],sys:"Tu es Maître IA, expert RGPD 2026. Réponds en français, max 5 phrases."},
+  etranger:{l:"Étrangers",full:"Droit des étrangers",p:true,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur le **droit des étrangers** : séjour, asile, naturalisation.",q:["Demande asile refusée ?","Obtenir nationalité française ?","Titre séjour refusé ?","Regroupement familial ?","OQTF reçue ?","Droits sans-papiers ?"],sys:"Tu es Maître IA, expert droit étrangers 2026. Réponds en français, max 5 phrases."},
+  liberte:{l:"Libertés",full:"Libertés publiques",p:true,intro:"Bonjour ! Je suis **Maître IA**. Je vous conseille sur les **libertés publiques** : expression, manifestation.",q:["Arrêté en manifestation ?","Liberté expression réseaux ?","Licencié pour opinions ?","Diffamation élu ?","Droit de grève ?","Site censuré ?"],sys:"Tu es Maître IA, expert libertés publiques 2026. Réponds en français, max 5 phrases."},
+};
+
+function avInit(){
+  const c=document.getElementById("av-cats");if(!c)return;
+  c.innerHTML=Object.entries(AVC).map(([k,v])=>`<button class="cat-btn${k===avCat?" active":""}" id="av-cat-${k}" onclick="avSetCat('${k}')" style="text-align:center;padding:12px 8px;position:relative;"><div style="width:32px;height:32px;border-radius:7px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;margin:0 auto 6px;"><svg width="16" height="16" style="color:var(--rf-blue);"><use href="#i-balance"/></svg></div><div style="font-weight:800;font-size:11px;color:var(--navy);line-height:1.3;">${v.full}</div>${v.p?'<div style="position:absolute;top:5px;right:5px;width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,#b5860d,#d4a017);display:flex;align-items:center;justify-content:center;"><svg width="7" height="7" style="color:#fff;"><use href="#i-star"/></svg></div>':""}</button>`).join("");
+  avSetCat(avCat);avUpdCr();
+}
+function avSetCat(k){
+  if(AVC[k].p&&!avPm){document.getElementById("av-modal").style.display="flex";return;}
+  avCat=k;
+  document.querySelectorAll("[id^='av-cat-']").forEach(b=>b.classList.remove("active"));
+  const el=document.getElementById("av-cat-"+k);if(el)el.classList.add("active");
+  const d=AVC[k];
+  document.getElementById("av-theme-badge").textContent=d.full;
+  document.getElementById("av-qr").innerHTML=d.q.map(q=>`<button style="background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--slate);font-weight:600;cursor:pointer;font-family:Marianne,Arial,sans-serif;" onclick="avSetQ(this.textContent)">${q}</button>`).join("");
+  avH=[];document.getElementById("av-msgs").innerHTML="";
+  avAddMsg("ai",d.intro.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>"));
+}
+function avSetQ(q){const inp=document.getElementById("av-inp");if(inp&&inp.disabled){document.getElementById("av-modal").style.display="flex";return;}if(inp){inp.value=q;inp.focus();}}
+function avAddMsg(role,content){
+  const w=document.getElementById("av-msgs"),d=document.createElement("div");
+  const now=new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+  d.style.cssText="max-width:85%;padding:10px 14px;font-size:13px;line-height:1.7;border-radius:"+(role==="user"?"14px 14px 3px 14px":"3px 14px 14px 14px")+";background:"+(role==="user"?"var(--rf-blue)":"#f1f5fb")+";color:"+(role==="user"?"#fff":"var(--slate)")+";align-self:"+(role==="user"?"flex-end":"flex-start")+";";
+  d.innerHTML=content+'<span style="font-size:10px;opacity:.45;margin-top:3px;display:block;">'+now+"</span>";
+  w.appendChild(d);w.scrollTop=w.scrollHeight;
+  if(role==="ai")avLast=content;
+}
+async function avSend(){
+  const inp=document.getElementById("av-inp"),txt=inp?inp.value.trim():"";if(!txt)return;
+  if(!avPm&&avCr<=0){document.getElementById("av-paywall").style.display="block";document.getElementById("av-modal").style.display="flex";return;}
+  inp.value="";avAddMsg("user",txt);avH.push({role:"user",content:txt});
+  const w=document.getElementById("av-msgs"),td=document.createElement("div");
+  td.id="av-typing";td.style.cssText="align-self:flex-start;background:#f1f5fb;border-radius:3px 14px 14px 14px;padding:11px 16px;font-size:20px;letter-spacing:4px;color:var(--muted);";
+  td.textContent="•••";w.appendChild(td);w.scrollTop=w.scrollHeight;
+  if(!avPm){avCr--;localStorage.setItem("av_cr",avCr);avUpdCr();}
+  try{
+    const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,system:AVC[avCat].sys,messages:avH})});
+    const json=await res.json(),reply=json.content?.[0]?.text||"Désolé, une erreur est survenue.";
+    avH.push({role:"assistant",content:reply});
+    const t=document.getElementById("av-typing");if(t)t.remove();
+    avAddMsg("ai",reply.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>").replace(/\n/g,"<br>"));
+    if(!avPm&&avCr<=0)setTimeout(()=>{document.getElementById("av-paywall").style.display="block";},800);
+  }catch(e){const t=document.getElementById("av-typing");if(t)t.remove();avAddMsg("ai","Erreur de connexion. Réessayez.");}
+}
+function avClear(){avH=[];document.getElementById("av-msgs").innerHTML="";const pw=document.getElementById("av-paywall");if(pw)pw.style.display="none";avAddMsg("ai",AVC[avCat].intro.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>"));}
+function avUpdCr(){
+  const numEl=document.getElementById("av-credits-num"),miniEl=document.getElementById("av-credits-mini"),barEl=document.getElementById("av-credits-bar"),inp=document.getElementById("av-inp"),btn=document.getElementById("av-send-btn");
+  if(avPm){if(miniEl)miniEl.innerHTML='<svg width="11" height="11" style="color:#b5860d;"><use href="#i-star"/></svg><strong style="color:#b5860d;">Premium · Illimité</strong>';return;}
+  if(numEl)numEl.textContent=avCr;
+  if(document.getElementById("av-credits-mini-n"))document.getElementById("av-credits-mini-n").textContent=avCr;
+  const pct=(avCr/AV_FREE)*100;
+  if(barEl){barEl.style.width=pct+"%";barEl.style.background=pct<=33?"linear-gradient(90deg,#b50000,#f87171)":pct<=66?"linear-gradient(90deg,#f59e0b,#fbbf24)":"linear-gradient(90deg,#00704a,#34d399)";}
+  if(inp&&btn){inp.disabled=avCr<=0;btn.disabled=avCr<=0;inp.placeholder=avCr<=0?"Quota atteint — Passez en Premium":"Décrivez votre situation juridique...";}
+}
+function avSelPlan(p){avPl=p;const lbl=document.getElementById("av-pay-label");if(lbl)lbl.textContent=p==="mensuel"?"S'abonner à 4,99€/mois":"S'abonner à 2,99€/mois (annuel)";}
+function avPay(){const link=avPl==="mensuel"?AV_SM:AV_SA;if(link.includes("REMPLACE")){alert("Configurez vos liens Stripe !");return;}window.open(link,"_blank");}
+
+// Patch gp pour init avocat au clic
+const _origGp=window.gp;
+window.gp=function(id){_origGp(id);if(id==="avocat")setTimeout(avInit,50);};
+</script>
+
